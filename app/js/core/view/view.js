@@ -266,26 +266,32 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
       this.itemView = {};
 
       _.each(bindings, function(item, key) {
-        var newItem = {};
-
-        if (_.isObject(item)) {
-          if (item.view) {
-            newItem.view = item.view;
-          }
-          newItem.options = item.options || null;
-        } else if (_.isFunction(item)) {
-          newItem.view = item;
-        }
-        if (!_.isFunction(newItem.view)) continue;
-        newItem = new newItem.view(newItem.options);
-        newItem.parentView = this;
-        this.itemView[key] = newItem;
+        addItemView(key,item);
       }, this);
     },
 
-    addItemView: function (key,options) {
-      // body...
-    }
+    addItemView: function (key,item) {
+      if(_.isEmpty(item)){
+        item=key;
+        key=key.cid;
+      }
+      if (_.Empty(key)) return;
+      var newItem = {};
+      if (_.isObject(item)) {
+        if (item.view) {
+          newItem.view = item.view;
+        }
+        newItem.options = item.options || null;
+      } else if (_.isFunction(item)) {
+        newItem.view = item;
+      }
+      if (!_.isFunction(newItem.view)) return;
+      newItem = new newItem.view(newItem.options);
+      newItem.parentView = this;
+      this.itemView[key] = newItem;
+
+      return newItem;
+    },
 
     unbindItemView: function() {
       if (!this.itemView || !this._itemViewBindings) {
