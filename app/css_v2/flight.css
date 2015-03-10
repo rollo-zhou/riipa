@@ -1,0 +1,600 @@
+/* filter_list */
+.filter_list input:checked + .icon_checked,.filter_menu .icon_checked,.filter_menu label,
+.filter_time .filter_landing,.filter_time .filter_takeoff{background:url(../img_v2/flight_filter.png) no-repeat 0 0;background-size:75px auto; -webkit-background-size:75px auto;}
+.filter_list {padding:0;height:100%; overflow:hidden;overflow-y: auto;margin-right: 76px;}
+.filter_list label{display: block; border-bottom:1px solid #ddd;  padding:10px 24px 10px 10px;margin:0 10px;position: relative; cursor: pointer;
+white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+.filter_list label .flight_logo{margin-right: 8px;}
+.filter_list label .san{margin-right: 15px; font-size:12px; display: inline-block; width:36px;}
+.filter_list input{visibility: hidden;position:absolute;}
+.filter_list input:checked + .icon_checked{background-position:0 0;height:11px; width:15px; position: absolute; right:0; top:16px; }
+.filter_list b{color:#3E608F; margin-right: 7px;}
+.filter_list i:first-child{margin-right: 8px;}
+.filter_list h2{height:25px; line-height: 25px; background-color: #f1f6f5; border-bottom:1px solid #c5c5c5; padding-left: 8px;
+white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+/* filter_menu */
+.filter_menu{height:100%; overflow:hidden;overflow-y: auto;width: 75px; border-left:1px solid #ddd; position: absolute; right:0; top:0; bottom:0; border-bottom:1px solid #ddd; background-color: #F5F5F5;  -webkit-box-sizing:border-box;
+box-sizing:border-box;}
+.filter_menu .icon_checked{background-position:-41px -2px;height:12px; width:13px; position: absolute; right:7px; top:25px; display: none;}
+.filter_menu label{display: block; position: relative;padding:45px 0 0 ;width:75px;border-top:1px solid #ddd;}
+.filter_menu input{position:absolute;visibility: hidden;}
+.filter_menu input:checked+.icon_checked{display: block;}
+.filter_menu span{position:relative;text-align: center;display: block;padding:5px;min-height:20px;line-height:16px;background-color:#f5f5f5;vertical-align: top;}
+.filter_menu .time{background-position:  0px -236px;}
+.filter_menu .time.active{background-position: 0px -86px; }
+.filter_menu .star{background-position:  0px -80px;}
+.filter_menu .star.active{background-position: 0px -139px;}
+.filter_menu .airport{background-position:  0px -161px;}
+.filter_menu .airport.active{background-position: 0px -610px;}
+.filter_menu .airline{background-position:  0px -385px;}
+.filter_menu .airline.active{background-position: 0px -460px;}
+ .filter_menu .stops{background-position:  0px -312px;}
+.filter_menu .stops.active{background-position: 0px -537px; }
+.filter_menu .class{background-position:  0px -687px;}
+.filter_menu .class.active{background-position: 0px -762px; }
+.filter_menu label.active span{background-color:#fff;}
+
+/* filter_time */
+.filter_time .filter_landing,.filter_time .filter_takeoff{margin-right: 15px;height:22px;width: 28px; display: inline-block;vertical-align: middle;}
+.filter_time .filter_landing{ background-position:0px -11px;}
+.filter_time .filter_takeoff{background-position: 0px -34px;}
+.filter_time .hd{padding:8px 10px;line-height: 22px;font-weight: bolder;color:#999;}
+
+/*
+ * Desc  : Flight dynamics
+* Creat : 2014.9.22
+* Author: lh.jiang
+*/
+.inside_status{min-height:91%;background-color: #fff;}
+.icon_night,
+.icon_person,
+.icon_bed,
+.icon_modifyorder,
+.icon_phone,
+.icon_rate,
+.icon_map,
+.icon_album,
+.icon_cancelorder,
+.icon_calendar,
+.icon_success,
+.icon_failure,
+.icon_attention{background:url(../img_v2/common/book.png) no-repeat 0px 0px;height:18px;width: 19px;background-size:75px auto; -webkit-background-size:75px auto;display:inline-block;}
+
+.icon_person{background-position:0px -18px;}
+.icon_bed{background-position:0px -36px;}
+.icon_modifyorder{background-position:0px -54px;}
+.icon_phone{background-position:0px -39px;}
+.icon_rate{background-position:0px -102px;}
+.icon_map{background-position:0px -126px;}
+.icon_album{background-position:0px -150px;}
+.icon_cancelorder{background-position:0px -174px;}
+.icon_calendar{background-position:0px -198px;}
+.icon_success{background-position:0px -222px;}
+.icon_failure{background-position:0px -297px;}
+.icon_attention{background-position:0px -372px;}
+
+.search_status{background:none;}
+.search_status .file_con{position: relative;}
+.search_status .file_con input{width:100%;padding:0 10px;margin-bottom:10px;height: 48px;line-height: 48px;font-size:15px;
+border-radius:5px;
+-moz-border-radius:5px;
+-webkit-border-radius:5px;
+-webkit-box-sizing:border-box;
+box-sizing:border-box;
+}
+.search_status .file_con i{display:block;position:absolute;top: 14px;right:10px;width:23px;height:23px;overflow:hidden;}
+.search_status .file_con .close{width:15px;height:15px;line-height:15px;text-align:center;color:#ccc;font-weight:700;font-size:18px;background-color:#fff;cursor:pointer;vertical-align: middle;border:3px solid #c6c6c6;
+-webkit-border-radius:15px;
+-webkit-border-radius:15px;
+border-radius:15px;
+}
+.my_flightList,
+.search_flightList{padding:10px;}
+.myFlight_item .icon_airline{width: 28px; height:28px; background-position: 0 -22px;}
+.myFlight_item>a{position: relative;padding: 10px 15px 10px 0;overflow:hidden;border-top:dotted 1px #ccc;}
+.myFlight_item:first-child a{border-top: 0;}
+.myFlight_item>a:after{-webkit-transform:rotate(45deg);
+         -moz-transform:rotate(45deg);
+         -ms-transform:rotate(45deg);
+         -o-transform:rotate(45deg);
+         transform: rotate(45deg);
+         border-top: solid 3px #106DB3;
+         border-right: solid 3px #106DB3;
+         content: "\20";
+         position: absolute;
+         right: 5px;
+         display: block;
+         width: 8px;
+         height: 8px;
+         top: 50%;
+         margin-top: -4px;}
+.myFlight_item a>div{float:left;width:28.9%;text-align: center;}
+.myFlight_item a>.column01{width: 29.9%;margin-right: 0;text-align: left;}
+.myFlight_item a>.column03{width: 12%;text-align: center;}
+.myFlight_item div>p{padding:3px 0;line-height:16px;color:#728594;}
+.myFlight_item .c_green{color:#6c6;}
+.myFlight_item .c_red{color:#eb4d4d;}
+.myFlight_item .c_blue{color:#1488dd;}
+.myFlight_item .name_c{padding-left:25px;position: relative;color:#333;}
+.myFlight_item .name_c .sign{position: absolute;left:0;top:0;margin:-4px 0 0 0;width: 24px;height: 24px;}
+.myFlight_item .sum{padding-left:24px;}
+.myFlight_item .city_c{display: inline-block;width: 100%;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;}
+.myFlight_item strong{color:#333;font-size:14px;}
+
+.page_head{padding:5px 20px;background-color: #f5f5f5;border-bottom:1px solid #c2c2c2;}
+.page_head h1{height:30px;line-height:30px;text-align: center;font-size:18px;color:#6c6;}
+.page_head .tips_title{color:#eb4d4d;}
+.page_head .accurate_title{color:#3091df;}
+.page_head .progress_bar{position: relative;padding:16px 40px 0;height:15px;}
+.progress_bar .inner{width: 100%;height:3px;background-color: #c2c2c2;display: table;}
+.progress_bar .star{position: absolute;left:0px;top:8px;}
+.progress_bar .last{position: absolute;right:0px;top: 8px;}
+.progress_bar .inner>span{display:table-cell;position: relative;height: 3px;}
+.progress_bar .bar_cu{background-color: #90cffc;vertical-align: top;min-width: 25px;width: 25px;}
+.progress_bar .bar_cu:after{content:"";position: absolute;right: 0;top: -11px;width: 25px;height: 25px;background: url(../img_v2/flight_filter.png) no-repeat -42px -41px; -webkit-background-size: 75px auto;
+   background-size: 75px auto;}
+.progress_bar .inner .number{position: absolute;top: -18px;left:50%;margin-left: -20px;color:#728594;}
+
+
+.detail_realtime{padding:0 10px;color:#728594;line-height: 20px;}
+.realtime_item {position: relative;padding:10px 0 10px 35px;border-top:#c2c2c2 solid 1px;}
+.realtime_item .weather{position: absolute;right:0;top:10px;font: 12px/20px Verdana;}
+.realtime_item .weather .weather_ico{vertical-align: middle;}
+.realtime_item:after{content:"";display: block;position: absolute;left:0;top:10px;background:url(../img_v2/flight_filter.png) no-repeat 0px 0;height:22px;width:28px;-webkit-background-size:75px auto; background-size:75px auto;}
+.realtime_item:first-child{border-top: none;
+}
+.departPort_item:after{background-position:0px -33px;height:22px;}
+.arrivePort_item:after{background-position:0px -11px;height:22px;}
+.realtime_item hr{margin:10px 0;height: 1px;border:none;border-bottom:1px dotted #ccc;}
+.realtime_item .city_c{height: 24px;line-height: 24px;}
+.realtime_item .f_strong{font-weight:bold;}
+.realtime_item p>span{margin-right: 5px;}
+.realtime_item p .time{color:#4081bc;}
+.othter_item{padding:10px 0 10px 35px;color:#728594;line-height:30px;border-top:#c2c2c2 solid 1px;background-color: #f5f5f5;}
+.textIco_green,.textIco_red{display: inline-block;padding:0 10px;height: 24px;line-height: 24px;color:#fff;
+border-radius:24px;-webkit-border-radius:24px;}
+.textIco_green{background-color: #6c6;}
+.textIco_red{background-color: #eb4d4d;}
+
+.flight_status{padding:0 10px;}
+.flight_status .search_status{margin-bottom:30px;padding:0;border:none;}
+.search_status li:after{display: none;}
+.search_status li:before{position: absolute;right:10px;top:12px;content:"";width: 16px;height:16px;overflow: hidden;background-image:url("../img_v2/sprite_x2.png");-webkit-background-size:55px auto;background-size: 55px auto;border:none;}
+.search_status li.number_area:before{background-position: -27px -516px;}
+.search_status li.date_area:before{background-position: -27px -538px;}
+.search_status li:last-child{border-bottom:1px solid #dedede;}
+.commentText{padding: 0px 10px;height: 25px;line-height: 25px;background-color: #fff2df;border-bottom:1px solid #c2c2c2;white-space: nowrap;text-overflow: ellipsis;overflow: hidden;color:#8d8d8d;}
+
+/* filter_sel */
+.filter_sel_typing{padding:10px; background-color:#0D65A4; text-align: center;}
+.filter_sel_typing input[type=text] {
+         -webkit-border-radius:5px;
+         -moz-border-radius:5px;
+         border-radius:5px;
+         height:39px;
+         line-height:normal;
+         width:100%;
+         display:block;
+         -webkit-box-sizing:border-box;
+         -webkit-appearance:none;
+         appearance:none;
+}
+.filter_sel_typing a{width: 40px; height:40px; line-height: 40px; float:right; margin-top: -39px; display:none;}
+.filter_sel_list .address_hd{display:block;padding:0 10px;height:24px; line-height: 24px; background-color:#F1F6FA;border-bottom:1px solid #E1E1E1;}
+.filter_sel_list{background-color: #fff;  overflow: hidden;}
+.filter_sel_list ul{background-color:#fff;}
+.filter_sel_list h2{padding:10px 40px 10px 32px;   position: relative;}
+.filter_sel_list h2 .nearby_ico{margin-left: 10px; position: absolute; top:12px; left:0px;}
+.filter_sel_list h2 strong{font-size:18px; display:inline-block; vertical-align: middle; margin-left: 3px;}
+.filter_sel_list h2 strong em{display:block; color:#7d8f9b; font-size:12px;}
+.filter_sel_list h2 small{display:block; height:24px; line-height: 24px; background-color:#F1F6FA; padding-left: 10px; margin-top: 5px; margin-left: -30px;}
+.filter_sel_list .filter_hd{position: relative;}
+.filter_sel_list .filter_hd .floatingBars{position: absolute;right:10px;top:2px;}
+
+.address_list li a{padding:4px 10px; position: relative; border-bottom:1px solid #E5EFF6;}
+.address_list li span {display:inline-block;width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:18px;}
+.address_list li small {width:100%;display:inline-block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:12px;color:#7d8f9b;}
+.address_list .address_hd{display:block;padding:0 10px;height:24px; line-height: 24px; background-color:#F1F6FA;border-bottom:1px solid #E1E1E1;}
+
+.hotel_book li:after,.bookPay_prices li:after,.book_guests li:after,.book_contracts li:after{display: none;}
+
+
+.bookPay_prices li{padding:10px 0;line-height:25px;color:#444f58;}
+.bookPay_prices li p{position: relative;}
+.bookPay_prices li.count .price{position: absolute;right: 10px;top:0;}
+.bookPay_prices li.count .price em{color:#8d857a;font-weight: normal;}
+.bookPay_prices li.total{margin: 0px -10px;padding: 10px;background-color: #fff2df;text-align: right;}
+.hotel_pay_prices li.total .keyName{position: absolute;left: 10px;top:10px;}
+.bookPay_prices li.total .price em{font-size:18px;font-weight: bolder;color:#1380d6;}
+.bookPay_prices li.total .prepay_tip{color:#8d857a;}
+
+
+
+/* Flight Dtail*/
+/* flight_info_hd */
+.flight_info_hd{color:#444f58; font-size:11px; overflow: hidden; /*border-bottom:1px solid #D4D4D4;*/ padding:4px 20px; background-color: #f5f5f5;}
+.flight_info_hd .airline_ico{float:left;margin-right: 10px;}
+.flight_info_hd .from,
+.flight_info_hd .to{float:left; margin-right: 20px; }
+.flight_info_hd .to{margin-right: 5px;}
+.flight_info_hd .date{margin-top: 4px;float:right; font-size:12px; color:#545454;font-weight: bolder;}
+.flight_info_hd .from span,
+.flight_info_hd .to span{display:inline-block; max-width:80px;white-space: nowrap;
+display: inline-block; overflow: hidden;text-overflow: ellipsis; color: #728594;
+font-size: 10px;}
+.flight_info_hd .from strong,
+.flight_info_hd .to strong{display: block;}
+
+/* airline_namelogo */
+.airline_namelogo {
+         overflow: hidden;
+         white-space: nowrap;
+         text-overflow: ellipsis;
+         float:left;
+         width:70%;
+         height:34px;
+         line-height:34px;
+         border-bottom:1px solid #E7E7E7;
+         font-size:15px;
+         color:#728594;
+         padding-bottom:3px;
+         border-right:1px solid #E7E7E7;
+         margin-top:-2px;
+         -webkit-box-sizing:border-box;
+         box-sizing:border-box;
+}
+.airline_namelogo .sign,
+.airline_info .sign {width: 24px; height:24px; display:inline-block; vertical-align: middle; margin-left: 7px; margin-right: 10px;}
+.airline_info_detail .sign {float: left;margin-top: 3px;margin-left: 3px;margin-bottom: 10px;}
+.airline_info_detail {position: relative;overflow: hidden;padding-top: 5px;}
+.airline_info_detail .air_name {font-size: 12px;color: #7A8C9A;}
+.airline_info_detail .air_namecode {font-size: 12px;color: #444f58;}
+.airline_info_detail .air_other {position: absolute;bottom: 7px;right: 0;text-align: right;font-size: 10px;}
+.airline_info_detail .air_other span {margin-right: 0;margin-left: 5px;}
+
+/* airline_namecode */
+.airline_namecode {
+         height:34px;
+         line-height:34px;
+         margin-top:-2px;
+         border-bottom:1px solid #E7E7E7;
+         font-size:15px;
+         color:#444f58;
+         font-weight:bold;
+         padding-bottom:3px;
+         -webkit-box-sizing:border-box;
+         box-sizing:border-box;
+         float:left;
+         padding-left:16px;
+         width:30%;
+}
+
+/* airline_info */
+.airline_info {font-size:12px; padding:8px 20px 0; color:#728594; background-color:#fff;clear: both;}
+.airline_info .fromto{position: relative; line-height: 20px;}
+.airline_info .fromto .time{float:left;width: 45px; text-align: left;vertical-align: middle;}
+.airline_info .fromto .time strong{color:#000;}
+.airline_info .fromto .airport{overflow: hidden; width:120px;float:left;vertical-align: middle;
+word-wrap: normal;
+word-break: normal; 
+text-overflow:ellipsis;
+overflow:hidden;}
+
+.airline_info .ico_fromto,.airline_info .ico_stops{ position: absolute; top:8px; left:41px;}
+
+.airline_info .fromto p{position: relative;padding-right:30px;overflow:hidden;}
+.airline_info .fromto .city{float:left;font-weight:bold; margin-left: 20px; margin-right: 20px;vertical-align: middle;}
+.airline_info .fromto .airport_num {font-size: 12px;font-weight: bold;position: absolute;right:0;white-space: nowrap;text-overflow: ellipsis;display: inline-block;overflow: hidden;}
+.airline_info .fromto .stops span:first-child{width:45px; display:inline-block;}
+.airline_info .fromto .add_day_count{font-size:10px; line-height: 1; margin-top: -4px; margin-bottom: 5px;}
+.airline_info .fromto .hightlight{color:#000; font-weight:bold;}
+.airline_info .time_total{height:20px; line-height: 20px; border-top:1px dashed #EAEAEA;  font-size:12px; padding-left: 5px; padding-right: 5px;}
+.airline_info .airline_info_early,.airline_info .airline_info_hui{padding:5px;line-height: 20px; border-top:1px dashed #EAEAEA;  font-size:12px;}
+.airline_info .airline_info_early h3,.airline_info .airline_info_hui h3{font-weight:normal;}
+
+.airline_info + .airline_type,
+.restrictions + .airline_type,
+.airline_type + .airline_type{padding:5px 13px 5px 23px; border-top:1px dashed #EAEAEA; border-bottom:1px solid #E1E1E1;}
+
+.airline_type{overflow: hidden; color:#728594; padding-top: 5px; padding-bottom: 5px; margin-top: -1px; background-color: #fff; white-space:nowrap; border-top:1px solid #E5E5E5;}
+.airline_name {font-size:12px;  float:left; margin-right: 10px; }
+.airline_name .logo{width: 24px; height:24px; float:left; margin-top: 3px;}
+.airline_name .name,
+.airline_name .code{margin-left: 30px;}
+.airline_name .airline_code,
+.airline_name .airline_positon{margin-top: 0; margin-left: 5px;}
+.airline_name .airline_code{margin-left: 10px;}
+.airline_code,.airline_positon{ margin-top:15px; font-size:10px; display: inline-block;}
+.airline_positon{ margin-right: 10px; display: inline-block; margin-top: 15px;}
+
+.ticket_policy{padding:0 20px;}
+.ticket_policy,
+.restrictions{font-size:12px;color:#728594; padding-bottom: 0; margin-top: -1px; position: relative; z-index: 1;}
+.restrictions{padding-bottom: 0;}
+.restrictions h3,.restrictions .con{margin:0 20px;}
+
+.ticket_policy h3,
+.restrictions h3 {font-weight:bold; margin-bottom: 3px; padding-top: 5px;color:#545454;}
+.
+.ticket_policy h3 span,
+.restrictions h3 span{margin-right: 10px; background-color: #f5f5f5;background-color:#F5F5F5; position: relative; z-index:2; padding-right:10px;}
+.flight_details_info_ticket .icon_arrow_down {position: absolute;top: 10px;right:20px;width:0;height:0;overflow:hidden;line-height:0;font-size:0;
+vertical-align:middle;
+border-top:5px solid #728594;
+border-bottom:0 none;
+border-left:5px solid transparent;
+border-right:5px solid transparent;}
+
+.flight_details_info_ticket .icon_arrow_up {position: absolute;top: 10px;right:20px;width:0;height:0;overflow:hidden;line-height:0;font-size:0;
+vertical-align:middle;
+border-bottom:5px solid #728594;
+border-top:0 none;
+border-left:5px solid transparent;
+border-right:5px solid transparent;}
+
+
+.ticket_policy dt,
+.restrictions dt{position: relative; padding-left: 10px;}
+.ticket_policy dt:before,
+.restrictions dt:before{position: absolute; width: 4px; height:4px; border-radius:2px; background-color: #728594; content:"\20"; display:block; top:5px; left:0;}
+
+.ticket_policy table {table-layout: fixed;width: 94%;margin:0 auto 5px;font-size: 11px;text-align: left;}
+.ticket_policy th {text-align: left;font-weight: normal;}
+
+.ticket_policy{overflow: hidden;}
+.ticket_policy dt{padding-left: 10px; -webkit-box-sizing:border-box; font-weight:bold; margin-right: 3px;}
+.ticket_policy dl:last-child{padding-bottom: 5px;}
+
+.restrictions p{padding-bottom: 5px; margin-left: 10px;}
+.restrictions .con{border-bottom:1px solid #D9D9D9;}
+.restrictions .airline_type{padding-left:28px;}
+
+.flight_details_info .ticket_policy:last-child,
+.flight_details_info .restrictions:last-child,
+.flight_details_info .restrictions:last-child .con:last-child{border-bottom:0 none;}
+.flight_info .restrictions{border-bottom:0 none;}
+
+/* flight_details */
+.flight_details_info {position:relative;background:#f5f5f5;-webkit-box-sizing:content-box;box-sizing:content-box;}
+.flight_details_info:after {display:block;content:"\20";position:absolute;top:-2px;left:-0;right:-0;height:2px;background-color:#6FA4CF;  }
+.flight_details_info_ticket:after{height: 1px;background-color: #e4e4e4;}
+
+
+/* wap2.0 flight_item lhj */
+
+/* header title */
+header h1.page_t span {display: inline-block;width: 40%;overflow: hidden;vertical-align: middle;white-space: nowrap;text-overflow:ellipsis;text-align: center;font-size: 18px;text-shadow: 0 -1px 0 #0C426C;}
+header h1.page_t .ico_v2 {margin-right: 10px;}
+
+
+.flight_action {z-index: 2;}
+
+/*flight action */
+.flight_action {
+         height:42px;
+         padding:4px 8px 5px;
+         background-color:#0D65A4;
+         position:fixed;
+         bottom:0;
+         width:100%;
+         -webkit-box-sizing:border-box;
+         box-sizing:border-box;
+}
+.flight_action ul{overflow: hidden;}
+.flight_action li{width: 50%;float:left;}
+.flight_action li a {position:relative;
+         height:31px;
+         line-height:31px;
+         border:1px solid #4689B9;
+         -webkit-border-radius:5px;
+         -moz-border-radius:5px;
+         border-radius:5px;
+         text-align:center;
+         color:#0d65a4;
+         margin-left:2px;
+         margin-right:2px;
+         font-size:15px;
+         background-color:rgb(206,206,212);
+         background-image:-webkit-gradient(linear,left top,left bottom,color-stop(20%,rgba(255,255,255,1)),color-stop(100%,rgba(206,206,212,1)));
+         background-image:-webkit-linear-gradient(top,rgba(255,255,255,1) 20%,rgba(206,206,212,1) 100%);
+         background-image:linear-gradient(to bottom,rgba(255,255,255,1) 20%,rgba(206,206,212,1) 100%);
+}
+
+/* flight_list  */
+.flight_list .hd{ background-color:#f5f5f5; border-bottom:1px solid #C2C2C2; padding:5px 10px;line-height: 1;}
+.flight_list .hd:after{clear:both; visibility: hidden; content:"\20"; height:0; display:block;}
+.flight_list .hd strong{display:block; font-size:15px; color:#444f58;}
+.flight_list .hd span{
+         max-width: 80px;
+         white-space: nowrap;
+         display: inline-block;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         color: #728594;
+         font-size: 10px;}
+
+.flight_list .hd .from,
+.flight_list .hd .to {float:left; margin-right: 5px;}
+.flight_list .hd .date {height: 32px;overflow: hidden;line-height: 32px;}
+.flight_list .hd .date a {display: inline-block; width: 32%; font-size:12px; color:#728594; text-align: center;}
+.flight_list .hd .date a.cur {color: #545454;}
+.flight_list .hd .icon_airline,
+.flight_details .hd .icon_airline{width: 26px; float:left; height:25px; margin-right: 22px;}
+.flight_details .hd .icon_airline{margin: 0;}
+.list_toolbar li:first-child{padding-top:5px;border-right:none;}
+/* result_stops */
+.result_stops{padding:10px; font-size:7px; color:#A7A4A0; font-weight:bold;background-color: #F1F6FA; border-top:1px solid #C5C5C5; border-bottom:1px solid #C5C5C5; padding-left: 10px;
+display:table;width: 100%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.result_stops p,.result_stops .arrow{display:table-cell;width: 25%;box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;}
+.result_stops p{text-align: center;}
+.result_stops .cur{color:#000;}
+.result_stops .icon_listcheck{background: url(../img_v2/flight/icon-listCheck.png) no-repeat; width: 7px; height:5px; display: inline-block; -webkit-background-size: 7px 5px;background-size: 7px 5px; vertical-align: middle; margin-right: 5px;}
+.result_stops p span{ display: inline-block;}
+.result_stops .arrow {
+   height:2px;
+   position: relative;
+   border: 0;
+   z-index: 2;
+   width: 15%;
+   margin-left: 10px;
+   margin-right: 10px;
+   vertical-align:middle;
+   text-align: right;
+   padding: 0 5px;
+}
+.result_stops .arrow:after {
+   content: "";
+   display:block;
+   position: relative;
+   float: right;
+   width: 5px;
+   height: 5px;
+   border-right: 2px solid #A7A4A0;
+   border-bottom: 2px solid #A7A4A0;
+   transform: rotate(-45deg);
+   -webkit-transform: rotate(-45deg);
+   -moz-transform: rotate(-45deg);
+   -ms-transform: rotate(-45deg);
+   -o-transform: rotate(-45deg);
+  margin-top: -5px;
+  margin-top: -4px\9;
+
+  
+}
+.result_stops .arrow:before {
+   content: "";
+   float: left;
+   display:block;
+   width: 100%;
+   height: 2px;
+   overflow: hidden;
+   background-color: #CCC;   
+}
+
+.flight_item {padding:7px 10px 0;height:70px;background:#fff;border-bottom:1px solid #D4D4D4;}
+.flight_item.active {background:#3486c2;}
+.flight_item.active a{background-color: #3486C2;}
+.flight_item.active .tit,
+.flight_item.active .from_to strong,
+.flight_item.active .from_to span,
+.flight_item.active .price span,
+.flight_item.active  .price em{color:#fff;}
+
+.flight_item .stop_num_box span {position:relative;display:inline-block;height:20px;margin-top: -9px;padding-top:9px;background-image: url(../img_v2/flight/List-arrow2@2x.png);background-repeat: no-repeat;
+   background-position: top center;
+   -webkit-background-size: 10px 8px;
+   background-size: 10px 8px;
+   z-index: 2;
+}
+
+.flight_item.active .from_to hr{border-top-color:#fff; background-color: #fff;}
+.flight_item.active .from_to hr:before{background-color:#fff;}
+.flight_item.active .from_to hr:after{border-right-color:#fff; border-bottom-color:#fff;}
+.flight_item.active .from_to .stops{color:#fff;}
+
+.flight_item sup {
+         color:#ff9d10;
+         font-size:9px;
+         padding-left:8px;
+         padding-right:8px;
+         height:15px;
+         line-height:15px;
+         position:absolute;
+         top:0px;
+         right:9px;
+         display:inline-block;
+}
+.flight_item sup:before {
+         content:"\20";
+         display:none;
+         width:0;
+         height:0;
+         overflow:hidden;
+         line-height:0;
+         font-size:0;
+         border-right:4px solid #B9671F;
+         border-left:0 none;
+         border-top:4px solid transparent;
+         position:absolute;
+         left:-4px;
+}
+
+.flight_item a{position: relative; padding-top:3px; padding-left: 33px; background-color: #fff;}
+.flight_item .flight_logo{width: 24px; height:24px; position: absolute; left:5px;}
+.flight_item .tit {
+         display:block;width: 100%;
+         word-wrap: normal;
+         white-space:nowrap;
+         text-overflow:ellipsis;
+         overflow:hidden;
+         box-sizing:border-box;-moz-box-sizing:border-box;-webkit-box-sizing:border-box;
+         width:100%;
+         font-size:12px;
+         color:#728594;
+         padding-bottom:5px;
+         padding-right:130px;
+}
+.flight_item .cont{position: relative; padding-right: 90px;}
+.flight_item .from_to {
+         line-height:1;
+         padding-top:6px;
+         text-align:center;
+         position:relative;
+         padding-left:52px;
+         padding-right:61px;
+         -webkit-box-sizing:border-box;
+         height:40px;
+}
+.flight_item .from_to .from{position: absolute; left:0; top:7px;}
+.flight_item .from_to .to{position: absolute; right:10px; top:7px;}
+.flight_item .from_to .to .plus_day {position: absolute;top: -10px;left: 2px;}
+.flight_item .from_to strong{display:block; font-size:18px; color:#444f58;}
+.flight_item .from_to span{font-size:8px; color:#728594;}
+.flight_item .from_to .stops {
+         height:100%;
+         text-align:center;
+         font-size:9px;
+         color:#728594;
+         white-space:nowrap;
+         text-overflow:ellipsis;
+         overflow:hidden;
+         padding-left:5px;
+         padding-right:5px;
+}
+.flight_item .from_to hr{border:0 none; border-top:1px solid #B5B2AE; height:1px; background-color:#A7A4A0; position: relative;overflow:visible;}
+.flight_item .from_to hr:before {
+         content:"\20";
+         display:block;
+         position:absolute;
+         background-color:#A7A4A0;
+         width:5px;
+         height:5px;
+         -webkit-border-radius:3px;
+         -moz-border-radius:3px;
+         border-radius:3px;
+         left:-5px;
+         top:-4px;
+         border:1px solid #A7A4A0;
+}
+.flight_item .from_to hr:after {
+         content:"\20";
+         display:block;
+         position:absolute;
+         width:5px;
+         height:5px;
+         border-right:2px solid #A7A4A0;
+         border-bottom:2px solid #A7A4A0;
+         right:-1px;
+         -webkit-transform:rotate(-45deg);
+         -moz-transform:rotate(-45deg);
+         -ms-transform:rotate(-45deg);
+         -o-transform:rotate(-45deg);
+         transform:rotate(-45deg);
+         top:-4px;
+}
+.flight_item .price{width:90px;height:42px;text-align: center; position: absolute; top:0; padding-top:5px; right:0; font-size:9px;}
+.flight_item .price span{font-size:1em; color:#8797a2;}
+.flight_item .price em{font-size:2em; color:#1484dc;}
+.flight_item .price_spe{font-size:7px;}
+.flight_item .price .sum_text{display:block;position:absolute;bottom:5px;left:50%;margin-left:-20px;overflow:hidden;height:14px;line-height:14px;width:40px;border:1px solid #e8930a;background:#fff;color:#ff9600;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
+
