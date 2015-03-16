@@ -1,1922 +1,570 @@
-
-<!DOCTYPE HTML>
+<!DOCTYPE html>
+<!-- saved from url=(0027)  -->
 <html>
+
 <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta charset="UTF-8">
-    <title>移动版</title>
-    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
-    <meta content="yes" name="apple-mobile-web-app-capable">
-    <meta content="black" name="apple-mobile-web-app-status-bar-style">
-    <meta name="format-detection" content="telephone=no" />
-    <!-- H5 to  wap add -->
-    <link rel="apple-touch-icon-precomposed" href="img_v2/m/app_icon_72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img_v2/m/app_icon_114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img_v2/app_icon_114.png" />
-    <link href="img_v2/m/startup.png" media="(device-width: 320px)" rel="apple-touch-startup-image">
-    <link href="img_v2/m/startup_2x.png" media="(device-width: 320px) and (-webkit-device-pixel-ratio: 2)"  rel="apple-touch-startup-image">
-    <meta name="apple-touch-fullscreen" content="yes" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <script type="text/javascript" src="../libs/3rd-libs/requirejs/require.js" data-main="js/main"></script>
+    <title>Ctrip Mobile – Anywhere to everywhere</title>
+    <link rel="stylesheet" href="http://webresource.english.ctrip.com/ResGlobalOnline/R9/EnglishSite/WAP/v3/css/home.css?releaseno=2015011902">
 </head>
-<body>
-<div class="page" id="home-page">
-    <header class="header">
-        <span class="head_bt"><i class="key_ico"></i></span>
-        <i class="home_logo"></i>
-    </header>
-    <!-- /header -->
-    <section class="home">
-        <ul class="page_tab">
-            <li  class="cur"><a href="#"><i class="ico_v2 hotels_ico"></i>Hotels</a></li>
-            <li><a href="#"><i class="ico_v2 flight_ico"></i>Flight</a></li>
-        </ul>
-        <div class="hotels_home">
-            <a class="hotel_nearby" href="#">
-                <i class="ico_v2 nearby_ico"></i>Hotels for tonight nearby
-            </a>
-            <ul class="search_box">
-                <li class="search_locate">
-                    <a href="#">
-                        <span>Staying in</span><strong>Shanghai</strong>
-                    </a>
-                </li>
-                <li class="search_checks">
-                    <a href="#" class="checkin">
-                        <date class="search_date">
-                            <label>Check-in</label>
-                            <p class="time">
-                                <span class="today">Today</span>
-                                <span class="date">26</span>
-                                <span class="month">Dec</span>
-                            </p>
-                        </date>
-                    </a>
-                    <span class="empty_area_show"></span>
-                    <a href="#" class="checkout">
-                        <!-- 显示则替换为date_round_show -->
-                        <date class="search_date">
-                            <label>Check-out</label>
-                            <p class="time">
-                                <span class="tue">Tue</span>
-                                <span class="date">20</span>
-                                <span class="month">Dec</span>
-                            </p>
-                        </date>
-                    </a>
 
-                </li>
-                <li class="search_name">
-                    <a href="#">Hotel name contains</a>
-                </li>
-            </ul>
-            <a href="#" class="btn_search"><i class="ico_v2 icon_find"></i>Search</a>
+<body ondblclick="return false;">
+    <div class="app_loading_bg" id="app_loading" style="-webkit-transform: translateX(375px); display: none;">
+        <div class="app_loading">
+            <span class="l_circle"></span>
         </div>
-        <div class="flight_home" style="display: none;">
-            <div class="tab_area">
-                <ul class="tab_flt">
-                    <li class="" data-value="round">Round trip</li>
-                    <li class="cur" data-value="one">One way</li>
+    </div>
+
+    <div class="m_bp_hidden">
+        <div class="page" id="home-index">
+            <header class="header">
+                <span class="head_bt" id="slidenavTab"><i class="key_ico"></i></span><i class="home_logo">
+            </i>
+            </header>
+            <!-- /header -->
+            <section class="home">
+                <div class="top_banner" id="home-topic-ads">
+                    <a href="http://pages.english.ctrip.com/mobile/index.html#visa-mobile" target="_blank">
+                        <img src="./img/en-640x150-00.png" alt="" style="width: 100%;">
+                    </a>
+                </div>
+                <ul class="page_tab">
+                    <li id="hotelstab"><a href="#"><i class="ico_v2 hotels_ico"></i>Hotels</a>
+                    </li>
+                    <li id="flightstab" class="cur"><a href="#"><i class="ico_v2 flight_ico"></i>Flights</a>
+                    </li>
                 </ul>
+                <div class="hotels_home" id="hotelsDiv" style="display: none;">
+                    <form action="./index_files/index.html" id="hotelsrc_form" method="post">
+                        <a id="nearbyhotel" class="hotel_nearby" href=" #"><i class="ico_v2 nearby_ico"></i>
+                            Nearby hotels for tonight
+                        </a>
+                        <div class="search_box">
+                            <ul>
+                                <li class="search_locate">
+                                    <a href=" #" id="hotelcity" cityid="35713" cityname="Kusatsu" note="Kusatsu,Gunma, Japan" cityenname="Kusatsu">
+                                        <!-- 增加 active 类名状态-->
+                                        <label>Staying in</label>
+                                        <strong>Kusatsu</strong> </a>
+                                </li>
+                                <li class="search_checks">
+                                    <a id="hotelCheckInDate" href=" #" class="checkin" selecteddate="2015/03/12">
+                                        <!-- 增加 active 类名状态-->
+                                        <div class="search_date">
+                                            <label>
+                                                Check-in</label>
+                                            <p class="time">
+                                                <span class="d_date" id="check-in-date">12  Mar</span>
+                                                <span id="check-in-week" class=""> Thu</span>
+                                            </p>
+                                        </div>
+                                    </a><span class="empty_area_show"></span>
+                                    <a id="hotelCheckOutDate" href=" #" class="checkout" selecteddate="2015/03/13">
+                                        <!-- 增加 active 类名状态-->
+                                        <!-- 显示则替换为date_round_show -->
+                                        <div class="search_date">
+                                            <label>Check-out</label>
+                                            <p class="time">
+                                                <span class="d_date" id="check-out-date">13  Mar</span>
+                                                <span id="check-out-week"> Fri</span>
+                                            </p>
+                                        </div>
+                                    </a>
+                                </li>
+                                <li class="search_name">
+                                    <a href=" #" id="hotelname">
+                                        <!-- 增加 active 类名状态-->
+                                        <label>Hotel name contains</label>
+                                        <strong></strong>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- 增加 active 类名状态-->
+                        </div>
+                        <a href=" #" id="hotelsearch" class="btn_search"><i class="ico_v2 icon_find"></i>
+            Search hotels
+        </a>
+                        <input id="h_post_json" name="h_post_json" type="hidden" value="">
+                    </form>
+                </div>
+
+                <div class="flight_home" id="flightsDiv">
+                    <form action="./index_files/index.html" id="flightsearch_form" method="post">
+                        <div class="tab_area">
+                            <ul class="tab_flt">
+                                <li class="cur" id="flightRoundTrip">Round trip</li>
+                                <li class="" id="flightOneWay">One Way</li>
+                            </ul>
+                        </div>
+                        <!-- /tab_flt -->
+                        <ul class="search_box search_flt">
+                            <li><a id="flightIndex-flightAddressFrom"><strong>From</strong>
+                <span class="sort_name"></span></a><span class="cutover_area" id="cutoverfromto"><i class="ico_v2 cutover_ico">
+                </i></span><a id="flightIndex-flightAddressTo"><strong>To</strong>
+                    <span class="sort_name"></span></a>
+                            </li>
+                            <li>
+                                <a class="date_oneway_two" id="flightDateDepart" selecteddate="2015/03/10">
+                                    <label>Depart</label>
+                                    <p class="time">
+                                        <span class="d_date" id="dtime">10  Mar</span>
+                                        <span id="dweek" class="today">Today</span>
+                                    </p>
+                                </a><span></span>
+                                <a class="date_round_show" id="flightDateRound" selecteddate="2015/03/11">
+                                    <label>Return</label>
+                                    <p class="time">
+                                        <span class="d_date" id="atime">11  Mar</span>
+                                        <span id="aweek" class=""> Wed</span>
+                                    </p>
+                                </a>
+                            </li>
+
+                            <li class="flt_class">
+                                <a id="flightindexclass">
+                                    <label>
+                                        Class</label>
+                                    <strong id="flightindexclassstrong">Economy</strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- /search_flt -->
+                        <a class="btn_search" id="flightSearch" href=" #"><i class="ico_v2 icon_find"></i>Search flights</a>
+                        <input id="f_post_json" name="f_post_json" type="hidden" value="">
+                    </form>
+                </div>
+            </section>
+            <div class="overlay_slide" style="display: none;" id="overlay_slide">
             </div>
-            <!-- /tab_flt -->
-            <ul class="search_box search_flt">
-                <li>
-                    <a href="#" class="" id="flt-departure">
-                        <strong>Shanghaitogsdkfjsdfk</strong>
-                        <span class="sort_name">pudong (SHA)</span>
-                    </a>
-                    <span class="cutover_area"><i class="ico_v2 cutover_ico"></i></span>
-                    <a href="#" id="flt-arrive">
-                        <strong>Guangzhou</strong>
-                        <span class="sort_name">all airport (BJS)</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="date_oneway" id="flt-depart-date">
-                        <date>
-                            <span class="d_date">May 05</span>
-                            <span class="today">Today</span>
-                        </date>
-                    </a>
-                    <span class="empty_area"></span>
-                    <a class="date_round" href="#" id="flt-arrive-date">
-                        <!-- 显示则替换为date_round_show -->
-                        <date>
-                            <span class="d_date">May 07</span>
-                            <span class="tue">Tue</span>
-                        </date>
-                    </a>
-                </li>
-                <li class="flt_number">
-                    <label>Number of<br>travelers</label>
-					<span class="input_number">
-						<span class="jian">-</span><!-- 增加 active 状态类名 -->
-						<span class="input"><span class="num">1</span></span>
-						<span class="jia active">+</span><!-- 增加 active 状态类名 -->
-					</span>
-                </li>
-                <li class="type"><a href="#">Economy</a></li>
-            </ul>
-            <!-- /search_flt -->
-            <a href="#" class="btn_search"><i class="ico_v2 icon_find"></i>Search</a>
-            <p class="search_other"><a href="#">Search flights</a> | <a href="#" class="highlight">Flight Status</a></p>
         </div>
-    </section>
-    <div class="overlay_slide" style="display: none;"></div>
-</div>
+        <div class="slide_nav" id="slidenavdiv" style="-webkit-transform: translateX(-100%); display: none;">
+            <div class="user_info">
+                <a href=" account/turnaccount/"><i class="ico_v2 user_ico"></i>Sign in</a>
+            </div>
+            <ul>
+                <li id="languageTab"><a href=" #">Language</a><span class="current">
+            English &nbsp;<i class="ico_country ico_country_english"></i></span><i class="arrow_r"></i>
+                </li>
+                <li id="currencyTab"><a href=" #">Currency</a><span class="current">CNY &nbsp;<i class="ico_v2 icon_dollar"></i></span><i class="arrow_r"></i>
+                </li>
+            </ul>
+            <ul>
+                <li><a href=" vhistory/hotelhistory/"><i class="ico_v2 views_ico"></i>My viewed hotels</a><i class="arrow_r"></i>
+                </li>
+                <li><a href=" vhistory/searchhistory/"><i class="ico_v2 history_ico"></i>Search history</a><i class="arrow_r"></i>
+                </li>
+                <li><a href=" home/info/"><i class="ico_v2 history_ico"></i>More info</a><i class="arrow_r"></i>
+                </li>
 
-<div class="page" id="language-page" style="display: none;">
-    <header class="header">
-        <span class="head_bt head_back"></span>
-        <h1 class="page_title">Currency</h1>
-    </header>
-    <!-- /header -->
-    <section class="inside_common">
-        <ul class="choose_list">
-            <li class="active"><i class="ico_country ico_country_cn"></i> <em>简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_en"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_kr"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_es"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_jp"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_de"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_ru"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_fr"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_tc"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-            <li><em><i class="ico_country ico_country_vi"></i> 简体中文</em><i class="ico_v2 choose_ico"></i></li>
-        </ul>
-        <div class="choose_action"><a href="#" class="btn_primary">确定</a></div>
-    </section>
-</div>
+            </ul>
+            <ul>
+                <li class="active"><a id="downloadapp" href=" downapp/?utm_medium=wap&utm_source=ctripintl&utm_campaign=en_wappopup_20141017" target="_blank">Download the Ctrip app</a><i class="arrow_r"></i>
+                </li>
 
-<div id="currency-page" class="page" style="display: none;">
-    <header class="header">
-        <span class="head_bt head_back" id="currencycancel"></span>
-        <h1 class="page_title">
+            </ul>
+        </div>
+
+        <!--Currency_BEGIN-->
+        <div id="currencyDiv" class="page" style="display: none; z-index: 999;">
+            <header class="header" style="position:fixed; top:0;">
+                <span class="head_bt head_back" id="currencycancel"></span>
+                <h1 class="page_title">
             Currency</h1>
-    </header>
-    <section class="inside_common">
-        <ul id="indexcurrencysrcollpanel" class="choose_list">
-            <!-- 增加 active 状态类名 visited访问过类名-->
-            <li value="CNY" data-href="/m/home/setcurrency?curr=CNY" class="active">
-                <a href="###"><em>CNY</em> <small>- Chinese Yuan</small><i class="ico_v2 choose_ico"><b></b></i></a> </li>
-            <li value="USD" data-href="/m/home/setcurrency?curr=USD">
-                <a href="###"><em>USD</em> <small>- United States Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="EUR" data-href="/m/home/setcurrency?curr=EUR">
-                <a href="###"><em>EUR</em><small>- Euro</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="GBP" data-href="/m/home/setcurrency?curr=GBP">
-                <a href="###"><em>GBP</em><small>- United Kingdom Pound</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="AUD" data-href="/m/home/setcurrency?curr=AUD">
-                <a href="###"><em>AUD</em><small>- Australian Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="HKD" data-href="/m/home/setcurrency?curr=HKD">
-                <a href="###"><em>HKD</em><small>- Hong Kong Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="TWD" data-href="/m/home/setcurrency?curr=TWD">
-                <a href="###"><em>TWD</em><small>- New Taiwan Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="KRW" data-href="/m/home/setcurrency?curr=KRW">
-                <a href="###"><em>KRW</em><small>- Korean Won</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="JPY" data-href="/m/home/setcurrency?curr=JPY">
-                <a href="###"><em>JPY</em><small>- Japanes Yen</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="CAD" data-href="/m/home/setcurrency?curr=CAD">
-                <a href="###"><em>CAD</em><small>- Canadian Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="CHF" data-href="/m/home/setcurrency?curr=CHF">
-                <a href="###"><em>CHF</em><small>- Swiss Franc</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="DKK" data-href="/m/home/setcurrency?curr=DKK">
-                <a href="###"><em>DKK</em><small>- Danish Krone</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="MOP" data-href="/m/home/setcurrency?curr=MOP">
-                <a href="###"><em>MOP</em><small>- Macau Pataca</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="MYR" data-href="/m/home/setcurrency?curr=MYR">
-                <a href="###"><em>MYR</em><small>- Malaysian Ringgit</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="NZD" data-href="/m/home/setcurrency?curr=NZD">
-                <a href="###"><em>NZD</em><small>- New Zealand Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="SEK" data-href="/m/home/setcurrency?curr=SEK">
-                <a href="###"><em>SEK</em><small>- Swedish Kronor</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="SGD" data-href="/m/home/setcurrency?curr=SGD">
-                <a href="###"><em>SGD</em><small>- Singapore Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="PHP" data-href="/m/home/setcurrency?curr=PHP">
-                <a href="###"><em>PHP</em><small>- Philippine Peso</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="RUB" data-href="/m/home/setcurrency?curr=RUB">
-                <a href="###"><em>RUB</em><small>- Russian Ruble</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="VND" data-href="/m/home/setcurrency?curr=VND">
-                <a href="###"><em>VND</em><small>- Vietnamese Dong</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="THB" data-href="/m/home/setcurrency?curr=THB">
-                <a href="###"><em>THB</em><small>- Thai Baht</small><i class="ico_v2 choose_ico"></i></a> </li>
-            <li value="IDR" data-href="/m/home/setcurrency?curr=IDR">
-                <a href="###"><em>IDR</em><small>- Indonesia Rupiahs</small><i class="ico_v2 choose_ico"></i></a> </li>
+            </header>
+            <section class="inside_common" style="position:absolute;top:44px;overflow-x: hidden;overflow-y: auto;">
+                <ul id="indexcurrencysrcollpanel" class="choose_list">
+                    <!-- 增加 active 状态类名 visited访问过类名-->
+                    <li value="CNY" data-href="/m/home/setcurrency?curr=CNY" class="active">
+                        <a href=" ###"><em>CNY</em> <small>- Chinese Yuan</small><i class="ico_v2 choose_ico"><b></b></i></a> </li>
+                    <li value="USD" data-href="/m/home/setcurrency?curr=USD">
+                        <a href=" ###"><em>USD</em> <small>- United States Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="EUR" data-href="/m/home/setcurrency?curr=EUR">
+                        <a href=" ###"><em>EUR</em><small>- Euro</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="GBP" data-href="/m/home/setcurrency?curr=GBP">
+                        <a href=" ###"><em>GBP</em><small>- United Kingdom Pound</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="AUD" data-href="/m/home/setcurrency?curr=AUD">
+                        <a href=" ###"><em>AUD</em><small>- Australian Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="HKD" data-href="/m/home/setcurrency?curr=HKD">
+                        <a href=" ###"><em>HKD</em><small>- Hong Kong Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="TWD" data-href="/m/home/setcurrency?curr=TWD">
+                        <a href=" ###"><em>TWD</em><small>- New Taiwan Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="KRW" data-href="/m/home/setcurrency?curr=KRW">
+                        <a href=" ###"><em>KRW</em><small>- Korean Won</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="JPY" data-href="/m/home/setcurrency?curr=JPY">
+                        <a href=" ###"><em>JPY</em><small>- Japanes Yen</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="CAD" data-href="/m/home/setcurrency?curr=CAD">
+                        <a href=" ###"><em>CAD</em><small>- Canadian Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="CHF" data-href="/m/home/setcurrency?curr=CHF">
+                        <a href=" ###"><em>CHF</em><small>- Swiss Franc</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="DKK" data-href="/m/home/setcurrency?curr=DKK">
+                        <a href=" ###"><em>DKK</em><small>- Danish Krone</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="MOP" data-href="/m/home/setcurrency?curr=MOP">
+                        <a href=" ###"><em>MOP</em><small>- Macau Pataca</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="MYR" data-href="/m/home/setcurrency?curr=MYR">
+                        <a href=" ###"><em>MYR</em><small>- Malaysian Ringgit</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="NZD" data-href="/m/home/setcurrency?curr=NZD">
+                        <a href=" ###"><em>NZD</em><small>- New Zealand Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="SEK" data-href="/m/home/setcurrency?curr=SEK">
+                        <a href=" ###"><em>SEK</em><small>- Swedish Kronor</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="SGD" data-href="/m/home/setcurrency?curr=SGD">
+                        <a href=" ###"><em>SGD</em><small>- Singapore Dollar</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="PHP" data-href="/m/home/setcurrency?curr=PHP">
+                        <a href=" ###"><em>PHP</em><small>- Philippine Peso</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="RUB" data-href="/m/home/setcurrency?curr=RUB">
+                        <a href=" ###"><em>RUB</em><small>- Russian Ruble</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="VND" data-href="/m/home/setcurrency?curr=VND">
+                        <a href=" ###"><em>VND</em><small>- Vietnamese Dong</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="THB" data-href="/m/home/setcurrency?curr=THB">
+                        <a href=" ###"><em>THB</em><small>- Thai Baht</small><i class="ico_v2 choose_ico"></i></a> </li>
+                    <li value="IDR" data-href="/m/home/setcurrency?curr=IDR">
+                        <a href=" ###"><em>IDR</em><small>- Indonesia Rupiahs</small><i class="ico_v2 choose_ico"></i></a> </li>
+                </ul>
+            </section>
+        </div>
+        <!--Currency_END-->
+
+        <div id="languageDiv" class="page" style="display: none;">
+            <header class="header" style="position:fixed; top:0;">
+                <span class="head_bt head_back" id="languagecancel"></span>
+                <h1 class="page_title">
+            Language</h1>
+            </header>
+            <section class="inside_common" style="position:absolute;top:44px;overflow-x: hidden;overflow-y: auto;">
+                <ul id="indexlanguagesrcollpanel" class="choose_list">
+                    <!-- 增加 active 状态类名 visited访问过类名-->
+                    <li value="english" class="active">
+                        <a href="./index_files/index.html">
+                            <i class="ico_country ico_country_en"></i><em>English</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="hk">
+                        <a href="http://www.ctrip.com.hk/m/">
+                            <i class="ico_country ico_country_tc"></i><em>中文繁體</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="jp">
+                        <a href="http://jp.ctrip.com/m/">
+                            <i class="ico_country ico_country_jp"></i><em>日本語</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="kr">
+                        <a href="http://www.ctrip.co.kr/m/">
+                            <i class="ico_country ico_country_kr"></i><em>한국어</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="fr">
+                        <a href="http://fr.ctrip.com/m/">
+                            <i class="ico_country ico_country_fr"></i><em>Français</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="de">
+                        <a href="http://de.ctrip.com/m/">
+                            <i class="ico_country ico_country_de"></i><em>Deutsch</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="es">
+                        <a href="http://es.ctrip.com/m/">
+                            <i class="ico_country ico_country_es"></i><em>Español</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="ru">
+                        <a href="http://ru.ctrip.com/m/">
+                            <i class="ico_country ico_country_ru"></i><em>Русский</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                    <li value="vn">
+                        <a href="http://vn.ctrip.com/m/">
+                            <i class="ico_country ico_country_vi"></i><em>Tiếng Việt</em><i class="ico_v2 choose_ico"></i>
+                        </a>
+                    </li>
+                </ul>
+            </section>
+        </div>
+
+        <div id="choosehotelcheckinpanel" style="display: none;">
+        </div>
+        <div id="Index_Calendar_Depart" style="display: none;">
+        </div>
+        <div id="choosehotelcitypanel" class="page" style="display: none;">
+            <header style="position:fixed; top:0;">
+                <div class="contain">
+                    <input type="text" id="findHotelAddressInput" class="ipt" placeholder="City name">
+                    <span class="cancel"><i class="close" style="display: none;">×</i><a href=" #" id="clearHotelAddressInputButton">Cancel</a></span>
+                </div>
+            </header>
+            <section class="inside_cont" style="position: absolute; top: 44px; overflow-x: hidden; overflow-y: auto; min-height: 623px;">
+                <div id="selectHotelAddress" class="contain_city_list filter_sel_list">
+                    <div id="hotel-city-hots">
+                        <h2 id="nearhotelcitybutton">
+                    <i class="ico_v2 nearby_ico"></i><strong>Locating</strong>
+                </h2>
+                        <!--搜索记录-->
+                        <dl>
+                            <dt>Recent searches</dt>
+                            <dd>
+                                <ul id="hotel-city-recent">
+                                    <li cityname="Kusatsu" cityenname="Kusatsu" cityid="35713" note="Kusatsu,Gunma, Japan"><a><strong>Kusatsu</strong><small>Kusatsu,Gunma, Japan</small></a>
+                                    </li>
+                                    <li cityname="Beijing" cityenname="Beijing" cityid="1" note="Beijing, China"><a><strong>Beijing</strong><small>Beijing, China</small></a>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                        <!--流行城市-->
+                        <dl>
+                            <dt>Top destinations</dt>
+                            <dd>
+                                <ul>
+                                    <li cityname="Shanghai" cityenname="Shanghai" cityid="2" note="Shanghai, China">
+                                        <a>
+                                            <strong>Shanghai</strong>
+                                            <small>Shanghai, China</small>
+                                        </a>
+                                    </li>
+                                    <li cityname="Beijing" cityenname="Beijing" cityid="1" note="Beijing, China">
+                                        <a>
+                                            <strong>Beijing</strong>
+                                            <small>Beijing, China</small>
+                                        </a>
+                                    </li>
+                                    <li cityname="Guangzhou" cityenname="Guangzhou" cityid="32" note="Guangdong, China">
+                                        <a>
+                                            <strong>Guangzhou</strong>
+                                            <small>Guangdong, China</small>
+                                        </a>
+                                    </li>
+                                    <li cityname="Hong Kong" cityenname="HongKong" cityid="58" note="Hongkong, China">
+                                        <a>
+                                            <strong>Hong Kong</strong>
+                                            <small>Hongkong, China</small>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                    <div id="hotel-city-search-result" style="display: none;">
+                        <!--搜索结果城市-->
+                        <dl>
+                            <dt>Top destinations</dt>
+                            <dd>
+                                <ul>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="choosehotelnamepanel" class="page" style="display: none;">
+            <header style="position:fixed; top:0;">
+                <div class="contain">
+                    <input type="text" class="ipt" id="hotelnameinput" placeholder="Hotel name contains">
+                    <span class="cancel"><i class="close" style="display: none;">×</i><a href=" #">Done</a></span>
+                </div>
+            </header>
+            <section class="inside_cont" style="position: absolute; top: 44px; overflow-x: hidden; overflow-y: auto; min-height: 623px;">
+                <div class="contain_result_list filter_sel_list">
+                    <dl style="display: none;">
+                        <dt>Recent searches</dt>
+                        <dd>
+                            <ul id="hotelnamelist"></ul>
+                        </dd>
+                    </dl>
+                </div>
+            </section>
+        </div>
+
+        <div id="Index_ChooseAirport_From" style="display: none;" class="page">
+            <header style="position:fixed; top:0;">
+                <div class="contain">
+                    <input type="text" id="findAddressInput" placeholder="City name" class="ipt">
+                    <span class="cancel"><i class="close" style="display:none">×</i><a href=" #">Cancel</a></span>
+                </div>
+            </header>
+            <section class="inside_cont" style="position: absolute; top: 44px; overflow-x: hidden; overflow-y: auto; min-height: 623px;">
+                <div class="filter_sel_list">
+                    <h3 id="recentFromAddressTit" class="address_hd">
+                        Recent searches
+                    </h3>
+                    <ul id="recentFromAddress" class="address_list">
+                        <li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="ALL"
+                        airportname="All" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Beijing (ALL)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Beijing,China - All airport
+                                </small>
+                            </a>
+                        </li>
+                    </ul>
+                    <h3 class="address_hd">
+                        Top destinations
+                    </h3>
+                    <ul id="selectAddress" class="address_list">
+                        <li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="ALL"
+                        airportname="All" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Shanghai (ALL)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Shanghai,China - All airport
+                                </small>
+                            </a>
+                        </li>
+                        <li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="PVG"
+                        airportname="PU DONG" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Shanghai (PVG)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Shanghai,China - PU DONG airport
+                                </small>
+                            </a>
+                        </li>
+                        <li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="SHA"
+                        airportname="HONGQIAO" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Shanghai (SHA)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Shanghai,China - HONGQIAO airport
+                                </small>
+                            </a>
+                        </li>
+                        <li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="ALL"
+                        airportname="All" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Beijing (ALL)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Beijing,China - All airport
+                                </small>
+                            </a>
+                        </li>
+                        <li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="NAY"
+                        airportname="NANYUAN" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Beijing (NAY)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Beijing,China - NANYUAN airport
+                                </small>
+                            </a>
+                        </li>
+                        <li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="PEK"
+                        airportname="CAPITAL" country="China" isinternation="0">
+                            <a>
+                                <span>
+                                    <strong>
+                                        Beijing (PEK)
+                                    </strong>
+                                </span>
+                                <small>
+                                    Beijing,China - CAPITAL airport
+                                </small>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+    </div>
+    <div class="sort_sel" id="flightindexSortdiv" style="bottom: 0; display: none">
+        <div class="hd">
+            <h2>
+            Class</h2>
+            <a id="flightindexSortcancel">Cancel</a>
+        </div>
+        <ul id="flightindexsortui">
+            <li class="visited" data="0"><a><em>Economy</em><i></i></a>
+            </li>
+            <li data="2"><a><em>Business</em><i></i></a>
+            </li>
+            <li data="3"><a><em>First</em><i></i></a>
+            </li>
         </ul>
-    </section>
-</div>
-
-<div id="choose-hotel-city-page" class="page" style="display: none;">
-<header>
-    <div class="contain">
-        <input type="text" id="findHotelAddressInput" class="ipt" placeholder="City name">
-        <span class="cancel"><i class="close" style="display: none;" id="clear-city-btn">×</i>
-            <a href="#" id="cancel-choose-city-btn">Cancel</a></span>
     </div>
-</header>
-<section class="inside_cont" style="min-height: 524px;">
-<div id="selectHotelAddress" class="contain_city_list filter_sel_list">
-<div id="hotel-city-hots">
-    <h2 id="nearhotelcitybutton">
-        <i class="ico_v2 nearby_ico"></i><strong>Locating</strong>
-    </h2>
-    <!--搜索记录-->
-    <dl>
-        <dt>Recent searches</dt>
-        <dd>
-            <ul id="hotel-city-recent"><li cityname="Shanghai" cityenname="Shanghai" cityid="2" note="Shanghai, China"><a><strong>Shanghai</strong><small>Shanghai, China</small></a></li><li cityname="Hong Kong" cityenname="HongKong" cityid="58" note="Hongkong, China"><a><strong>Hong Kong</strong><small>Hongkong, China</small></a></li></ul>
-        </dd>
-    </dl>
-    <!--流行城市-->
-    <dl>
-        <dt>Top destinations</dt>
-        <dd>
-            <ul>
-                <li cityname="Shanghai" cityenname="Shanghai" cityid="2" note="Shanghai, China">
-                    <a>
-                        <strong>Shanghai</strong>
-                        <small>Shanghai, China</small>
-                    </a>
-                </li>
-                <li cityname="Beijing" cityenname="Beijing" cityid="1" note="Beijing, China">
-                    <a>
-                        <strong>Beijing</strong>
-                        <small>Beijing, China</small>
-                    </a>
-                </li>
-                <li cityname="Guangzhou" cityenname="Guangzhou" cityid="32" note="Guangdong, China">
-                    <a>
-                        <strong>Guangzhou</strong>
-                        <small>Guangdong, China</small>
-                    </a>
-                </li>
-                <li cityname="Hong Kong" cityenname="HongKong" cityid="58" note="Hongkong, China">
-                    <a>
-                        <strong>Hong Kong</strong>
-                        <small>Hongkong, China</small>
-                    </a>
-                </li>
-                <li cityname="Shenzhen" cityenname="Shenzhen" cityid="30" note="Guangdong, China">
-                    <a>
-                        <strong>Shenzhen</strong>
-                        <small>Guangdong, China</small>
-                    </a>
-                </li>
-                <li cityname="Hangzhou" cityenname="Hangzhou" cityid="17" note="Zhejiang, China">
-                    <a>
-                        <strong>Hangzhou</strong>
-                        <small>Zhejiang, China</small>
-                    </a>
-                </li>
-                <li cityname="Chengdu" cityenname="Chengdu" cityid="28" note="Sichuan, China">
-                    <a>
-                        <strong>Chengdu</strong>
-                        <small>Sichuan, China</small>
-                    </a>
-                </li>
-                <li cityname="Xian" cityenname="Xian" cityid="10" note="Shanxi, China">
-                    <a>
-                        <strong>Xian</strong>
-                        <small>Shanxi, China</small>
-                    </a>
-                </li>
-                <li cityname="Sanya" cityenname="Sanya" cityid="43" note="Hainan, China">
-                    <a>
-                        <strong>Sanya</strong>
-                        <small>Hainan, China</small>
-                    </a>
-                </li>
-                <li cityname="Xiamen" cityenname="Xiamen" cityid="25" note="Fujian, China">
-                    <a>
-                        <strong>Xiamen</strong>
-                        <small>Fujian, China</small>
-                    </a>
-                </li>
-                <li cityname="Suzhou" cityenname="Suzhou" cityid="14" note="Jiangsu, China">
-                    <a>
-                        <strong>Suzhou</strong>
-                        <small>Jiangsu, China</small>
-                    </a>
-                </li>
-                <li cityname="Qingdao" cityenname="Qingdao" cityid="7" note="Shandong, China">
-                    <a>
-                        <strong>Qingdao</strong>
-                        <small>Shandong, China</small>
-                    </a>
-                </li>
-                <li cityname="Nanjing" cityenname="Nanjing" cityid="12" note="Jiangsu, China">
-                    <a>
-                        <strong>Nanjing</strong>
-                        <small>Jiangsu, China</small>
-                    </a>
-                </li>
-                <li cityname="Yiwu" cityenname="Yiwu" cityid="536" note="Jinhua, Zhejiang, China">
-                    <a>
-                        <strong>Yiwu</strong>
-                        <small>Jinhua, Zhejiang, China</small>
-                    </a>
-                </li>
-                <li cityname="Dongguan" cityenname="Dongguan" cityid="223" note="Guangdong, China">
-                    <a>
-                        <strong>Dongguan</strong>
-                        <small>Guangdong, China</small>
-                    </a>
-                </li>
-                <li cityname="Ningbo" cityenname="Ningbo" cityid="375" note="Zhejiang, China">
-                    <a>
-                        <strong>Ningbo</strong>
-                        <small>Zhejiang, China</small>
-                    </a>
-                </li>
-                <li cityname="Macau" cityenname="Macau" cityid="59" note="Macao, China">
-                    <a>
-                        <strong>Macau</strong>
-                        <small>Macao, China</small>
-                    </a>
-                </li>
-                <li cityname="Dalian" cityenname="Dalian" cityid="6" note="Liaoning, China">
-                    <a>
-                        <strong>Dalian</strong>
-                        <small>Liaoning, China</small>
-                    </a>
-                </li>
-                <li cityname="Guilin" cityenname="Guilin" cityid="33" note="Guangxi, China">
-                    <a>
-                        <strong>Guilin</strong>
-                        <small>Guangxi, China</small>
-                    </a>
-                </li>
-                <li cityname="Kunming" cityenname="Kunming" cityid="34" note="Yunnan, China">
-                    <a>
-                        <strong>Kunming</strong>
-                        <small>Yunnan, China</small>
-                    </a>
-                </li>
-                <li cityname="Singapore" cityenname="Singapore" cityid="73" note="Singapore">
-                    <a>
-                        <strong>Singapore</strong>
-                        <small>Singapore</small>
-                    </a>
-                </li>
-                <li cityname="Tokyo" cityenname="Tokyo" cityid="228" note="Tokyo, Japan">
-                    <a>
-                        <strong>Tokyo</strong>
-                        <small>Tokyo, Japan</small>
-                    </a>
-                </li>
-                <li cityname="Seoul" cityenname="Seoul" cityid="274" note="Seoul Special City, South Korea">
-                    <a>
-                        <strong>Seoul</strong>
-                        <small>Seoul Special City, South Korea</small>
-                    </a>
-                </li>
-                <li cityname="Bangkok" cityenname="Bangkok" cityid="359" note="Thailand">
-                    <a>
-                        <strong>Bangkok</strong>
-                        <small>Thailand</small>
-                    </a>
-                </li>
-                <li cityname="Kuala Lumpur" cityenname="KualaLumpur" cityid="315" note="Selangor, Malaysia">
-                    <a>
-                        <strong>Kuala Lumpur</strong>
-                        <small>Selangor, Malaysia</small>
-                    </a>
-                </li>
-                <li cityname="Phuket" cityenname="Phuket" cityid="725" note="Phhuket Province, Thailand">
-                    <a>
-                        <strong>Phuket</strong>
-                        <small>Phhuket Province, Thailand</small>
-                    </a>
-                </li>
-                <li cityname="Manila" cityenname="Manila" cityid="364" note="Philippines">
-                    <a>
-                        <strong>Manila</strong>
-                        <small>Philippines</small>
-                    </a>
-                </li>
-                <li cityname="Langkawi" cityenname="Langkawi" cityid="1225" note="Kedah, Malaysia">
-                    <a>
-                        <strong>Langkawi</strong>
-                        <small>Kedah, Malaysia</small>
-                    </a>
-                </li>
-                <li cityname="Boracay" cityenname="Boracay" cityid="1391" note="Philippines">
-                    <a>
-                        <strong>Boracay</strong>
-                        <small>Philippines</small>
-                    </a>
-                </li>
-                <li cityname="Kotakinabalu" cityenname="Kotakinabalu" cityid="1393" note="Sabah, Malaysia">
-                    <a>
-                        <strong>Kotakinabalu</strong>
-                        <small>Sabah, Malaysia</small>
-                    </a>
-                </li>
-
-            </ul>
-        </dd>
-    </dl>
-</div>
-<div id="hotel-city-search-result" style="display: none;">
-    <!--搜索结果城市-->
-    <dl>
-        <dt>Top destinations</dt>
-        <dd>
-            <ul>
-            </ul>
-        </dd>
-    </dl>
-</div>
-</div>
-</section>
-</div>
-
-<div id="choose-hotel-name-page" class="page" style="display: none;">
-    <header>
-        <div class="contain">
-            <input type="text" class="ipt" id="hotel-name-input" placeholder="Hotel name contains">
-            <span class="cancel"><i class="close" style="display: none;">×</i><a href="#" id="cancel-search-hotel-name-btn">Cancel</a></span>
-        </div>
-    </header>
-    <section class="inside_cont" style="min-height: 524px;">
-        <div class="contain_result_list filter_sel_list">
-            <dl style="display: none;">
-                <dt>Recent searches</dt>
-                <dd>
-                    <ul id="hotelnamelist"></ul>
-                </dd>
-            </dl>
-        </div>
-    </section>
-</div>
-
-<div id="choose-hotel-checkin-page" class="page" style="display:none;"><header><a id="calender-go-back" class="head_bt head_back"></a><h1 class="page_title">Check-in</h1></header><section class="inside_calendar" style="overflow-y: auto; overflow-x: hidden;"><div class="calendar_sel_month"><em> Nov 2014</em></div><table class="calendar_sel_day" id="datestarttag"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td nextdate="2014/11/02" date="2014/11/01" class="ago">1</td></tr><tr><td nextdate="2014/11/03" date="2014/11/02" class="ago">2</td><td nextdate="2014/11/04" date="2014/11/03" class="ago">3</td><td nextdate="2014/11/05" date="2014/11/04" class="ago">4</td><td nextdate="2014/11/06" date="2014/11/05" class="ago">5</td><td nextdate="2014/11/07" date="2014/11/06" class="ago">6</td><td nextdate="2014/11/08" date="2014/11/07" class="ago">7</td><td nextdate="2014/11/09" date="2014/11/08" class="ago">8</td></tr><tr><td nextdate="2014/11/10" date="2014/11/09" class="ago">9</td><td nextdate="2014/11/11" date="2014/11/10" class="today cur">10<em>Today</em></td><td nextdate="2014/11/12" date="2014/11/11" class="cur">11</td><td nextdate="2014/11/13" date="2014/11/12" class="">12</td><td nextdate="2014/11/14" date="2014/11/13" class="">13</td><td nextdate="2014/11/15" date="2014/11/14" class="">14</td><td nextdate="2014/11/16" date="2014/11/15" class="">15</td></tr><tr><td nextdate="2014/11/17" date="2014/11/16" class="">16</td><td nextdate="2014/11/18" date="2014/11/17" class="">17</td><td nextdate="2014/11/19" date="2014/11/18" class="">18</td><td nextdate="2014/11/20" date="2014/11/19" class="">19</td><td nextdate="2014/11/21" date="2014/11/20" class="">20</td><td nextdate="2014/11/22" date="2014/11/21" class="">21</td><td nextdate="2014/11/23" date="2014/11/22" class="">22</td></tr><tr><td nextdate="2014/11/24" date="2014/11/23" class="">23</td><td nextdate="2014/11/25" date="2014/11/24" class="">24</td><td nextdate="2014/11/26" date="2014/11/25" class="">25</td><td nextdate="2014/11/27" date="2014/11/26" class="">26</td><td nextdate="2014/11/28" date="2014/11/27" class="">27</td><td nextdate="2014/11/29" date="2014/11/28" class="">28</td><td nextdate="2014/11/30" date="2014/11/29" class="">29</td></tr><tr><td nextdate="2014/12/01" date="2014/11/30" class="">30</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table><div class="calendar_sel_month"><em> Dec 2014</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td nextdate="2014/12/02" date="2014/12/01" class="">1</td><td nextdate="2014/12/03" date="2014/12/02" class="">2</td><td nextdate="2014/12/04" date="2014/12/03" class="">3</td><td nextdate="2014/12/05" date="2014/12/04" class="">4</td><td nextdate="2014/12/06" date="2014/12/05" class="">5</td><td nextdate="2014/12/07" date="2014/12/06" class="">6</td></tr><tr><td nextdate="2014/12/08" date="2014/12/07" class="">7</td><td nextdate="2014/12/09" date="2014/12/08" class="">8</td><td nextdate="2014/12/10" date="2014/12/09" class="">9</td><td nextdate="2014/12/11" date="2014/12/10" class="">10</td><td nextdate="2014/12/12" date="2014/12/11" class="">11</td><td nextdate="2014/12/13" date="2014/12/12" class="">12</td><td nextdate="2014/12/14" date="2014/12/13" class="">13</td></tr><tr><td nextdate="2014/12/15" date="2014/12/14" class="">14</td><td nextdate="2014/12/16" date="2014/12/15" class="">15</td><td nextdate="2014/12/17" date="2014/12/16" class="">16</td><td nextdate="2014/12/18" date="2014/12/17" class="">17</td><td nextdate="2014/12/19" date="2014/12/18" class="">18</td><td nextdate="2014/12/20" date="2014/12/19" class="">19</td><td nextdate="2014/12/21" date="2014/12/20" class="">20</td></tr><tr><td nextdate="2014/12/22" date="2014/12/21" class="">21</td><td nextdate="2014/12/23" date="2014/12/22" class="">22</td><td nextdate="2014/12/24" date="2014/12/23" class="">23</td><td nextdate="2014/12/25" date="2014/12/24" class="">24</td><td nextdate="2014/12/26" date="2014/12/25" class="">25</td><td nextdate="2014/12/27" date="2014/12/26" class="">26</td><td nextdate="2014/12/28" date="2014/12/27" class="">27</td></tr><tr><td nextdate="2014/12/29" date="2014/12/28" class="">28</td><td nextdate="2014/12/30" date="2014/12/29" class="">29</td><td nextdate="2014/12/31" date="2014/12/30" class="">30</td><td nextdate="2015/01/01" date="2014/12/31" class="">31</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table><div class="calendar_sel_month"><em>Jan 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td nextdate="2015/01/02" date="2015/01/01" class="">1</td><td nextdate="2015/01/03" date="2015/01/02" class="">2</td><td nextdate="2015/01/04" date="2015/01/03" class="">3</td></tr><tr><td nextdate="2015/01/05" date="2015/01/04" class="">4</td><td nextdate="2015/01/06" date="2015/01/05" class="">5</td><td nextdate="2015/01/07" date="2015/01/06" class="">6</td><td nextdate="2015/01/08" date="2015/01/07" class="">7</td><td nextdate="2015/01/09" date="2015/01/08" class="">8</td><td nextdate="2015/01/10" date="2015/01/09" class="">9</td><td nextdate="2015/01/11" date="2015/01/10" class="">10</td></tr><tr><td nextdate="2015/01/12" date="2015/01/11" class="">11</td><td nextdate="2015/01/13" date="2015/01/12" class="">12</td><td nextdate="2015/01/14" date="2015/01/13" class="">13</td><td nextdate="2015/01/15" date="2015/01/14" class="">14</td><td nextdate="2015/01/16" date="2015/01/15" class="">15</td><td nextdate="2015/01/17" date="2015/01/16" class="">16</td><td nextdate="2015/01/18" date="2015/01/17" class="">17</td></tr><tr><td nextdate="2015/01/19" date="2015/01/18" class="">18</td><td nextdate="2015/01/20" date="2015/01/19" class="">19</td><td nextdate="2015/01/21" date="2015/01/20" class="">20</td><td nextdate="2015/01/22" date="2015/01/21" class="">21</td><td nextdate="2015/01/23" date="2015/01/22" class="">22</td><td nextdate="2015/01/24" date="2015/01/23" class="">23</td><td nextdate="2015/01/25" date="2015/01/24" class="">24</td></tr><tr><td nextdate="2015/01/26" date="2015/01/25" class="">25</td><td nextdate="2015/01/27" date="2015/01/26" class="">26</td><td nextdate="2015/01/28" date="2015/01/27" class="">27</td><td nextdate="2015/01/29" date="2015/01/28" class="">28</td><td nextdate="2015/01/30" date="2015/01/29" class="">29</td><td nextdate="2015/01/31" date="2015/01/30" class="">30</td><td nextdate="2015/02/01" date="2015/01/31" class="">31</td></tr></tbody></table><div class="calendar_sel_month"><em> Feb 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td nextdate="2015/02/02" date="2015/02/01" class="">1</td><td nextdate="2015/02/03" date="2015/02/02" class="">2</td><td nextdate="2015/02/04" date="2015/02/03" class="">3</td><td nextdate="2015/02/05" date="2015/02/04" class="">4</td><td nextdate="2015/02/06" date="2015/02/05" class="">5</td><td nextdate="2015/02/07" date="2015/02/06" class="">6</td><td nextdate="2015/02/08" date="2015/02/07" class="">7</td></tr><tr><td nextdate="2015/02/09" date="2015/02/08" class="">8</td><td nextdate="2015/02/10" date="2015/02/09" class="">9</td><td nextdate="2015/02/11" date="2015/02/10" class="">10</td><td nextdate="2015/02/12" date="2015/02/11" class="">11</td><td nextdate="2015/02/13" date="2015/02/12" class="">12</td><td nextdate="2015/02/14" date="2015/02/13" class="">13</td><td nextdate="2015/02/15" date="2015/02/14" class="">14</td></tr><tr><td nextdate="2015/02/16" date="2015/02/15" class="">15</td><td nextdate="2015/02/17" date="2015/02/16" class="">16</td><td nextdate="2015/02/18" date="2015/02/17" class="">17</td><td nextdate="2015/02/19" date="2015/02/18" class="">18</td><td nextdate="2015/02/20" date="2015/02/19" class="">19</td><td nextdate="2015/02/21" date="2015/02/20" class="">20</td><td nextdate="2015/02/22" date="2015/02/21" class="">21</td></tr><tr><td nextdate="2015/02/23" date="2015/02/22" class="">22</td><td nextdate="2015/02/24" date="2015/02/23" class="">23</td><td nextdate="2015/02/25" date="2015/02/24" class="">24</td><td nextdate="2015/02/26" date="2015/02/25" class="">25</td><td nextdate="2015/02/27" date="2015/02/26" class="">26</td><td nextdate="2015/02/28" date="2015/02/27" class="">27</td><td nextdate="2015/03/01" date="2015/02/28" class="">28</td></tr></tbody></table><div class="calendar_sel_month"><em> Mar 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td nextdate="2015/03/02" date="2015/03/01" class="">1</td><td nextdate="2015/03/03" date="2015/03/02" class="">2</td><td nextdate="2015/03/04" date="2015/03/03" class="">3</td><td nextdate="2015/03/05" date="2015/03/04" class="">4</td><td nextdate="2015/03/06" date="2015/03/05" class="">5</td><td nextdate="2015/03/07" date="2015/03/06" class="">6</td><td nextdate="2015/03/08" date="2015/03/07" class="">7</td></tr><tr><td nextdate="2015/03/09" date="2015/03/08" class="">8</td><td nextdate="2015/03/10" date="2015/03/09" class="">9</td><td nextdate="2015/03/11" date="2015/03/10" class="">10</td><td nextdate="2015/03/12" date="2015/03/11" class="">11</td><td nextdate="2015/03/13" date="2015/03/12" class="">12</td><td nextdate="2015/03/14" date="2015/03/13" class="">13</td><td nextdate="2015/03/15" date="2015/03/14" class="">14</td></tr><tr><td nextdate="2015/03/16" date="2015/03/15" class="">15</td><td nextdate="2015/03/17" date="2015/03/16" class="">16</td><td nextdate="2015/03/18" date="2015/03/17" class="">17</td><td nextdate="2015/03/19" date="2015/03/18" class="">18</td><td nextdate="2015/03/20" date="2015/03/19" class="">19</td><td nextdate="2015/03/21" date="2015/03/20" class="">20</td><td nextdate="2015/03/22" date="2015/03/21" class="">21</td></tr><tr><td nextdate="2015/03/23" date="2015/03/22" class="">22</td><td nextdate="2015/03/24" date="2015/03/23" class="">23</td><td nextdate="2015/03/25" date="2015/03/24" class="">24</td><td nextdate="2015/03/26" date="2015/03/25" class="">25</td><td nextdate="2015/03/27" date="2015/03/26" class="">26</td><td nextdate="2015/03/28" date="2015/03/27" class="">27</td><td nextdate="2015/03/29" date="2015/03/28" class="">28</td></tr><tr><td nextdate="2015/03/30" date="2015/03/29" class="">29</td><td nextdate="2015/03/31" date="2015/03/30" class="">30</td><td nextdate="2015/04/01" date="2015/03/31" class="">31</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table><div class="calendar_sel_month"><em> Apr 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td nextdate="2015/04/02" date="2015/04/01" class="">1</td><td nextdate="2015/04/03" date="2015/04/02" class="">2</td><td nextdate="2015/04/04" date="2015/04/03" class="">3</td><td nextdate="2015/04/05" date="2015/04/04" class="">4</td></tr><tr><td nextdate="2015/04/06" date="2015/04/05" class="">5</td><td nextdate="2015/04/07" date="2015/04/06" class="">6</td><td nextdate="2015/04/08" date="2015/04/07" class="">7</td><td nextdate="2015/04/09" date="2015/04/08" class="">8</td><td nextdate="2015/04/10" date="2015/04/09" class="">9</td><td nextdate="2015/04/11" date="2015/04/10" class="">10</td><td nextdate="2015/04/12" date="2015/04/11" class="">11</td></tr><tr><td nextdate="2015/04/13" date="2015/04/12" class="">12</td><td nextdate="2015/04/14" date="2015/04/13" class="">13</td><td nextdate="2015/04/15" date="2015/04/14" class="">14</td><td nextdate="2015/04/16" date="2015/04/15" class="">15</td><td nextdate="2015/04/17" date="2015/04/16" class="">16</td><td nextdate="2015/04/18" date="2015/04/17" class="">17</td><td nextdate="2015/04/19" date="2015/04/18" class="">18</td></tr><tr><td nextdate="2015/04/20" date="2015/04/19" class="">19</td><td nextdate="2015/04/21" date="2015/04/20" class="">20</td><td nextdate="2015/04/22" date="2015/04/21" class="">21</td><td nextdate="2015/04/23" date="2015/04/22" class="">22</td><td nextdate="2015/04/24" date="2015/04/23" class="">23</td><td nextdate="2015/04/25" date="2015/04/24" class="">24</td><td nextdate="2015/04/26" date="2015/04/25" class="">25</td></tr><tr><td nextdate="2015/04/27" date="2015/04/26" class="">26</td><td nextdate="2015/04/28" date="2015/04/27" class="">27</td><td nextdate="2015/04/29" date="2015/04/28" class="">28</td><td nextdate="2015/04/30" date="2015/04/29" class="">29</td><td nextdate="2015/05/01" date="2015/04/30" class="">30</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table></section></div>
-
-<div id="choose-airport-depart" class="page" style="display:none;">
-<header>
-    <div class="contain">
-        <input type="text" id="findAddressInput" placeholder="City name" class="ipt">
-        <span class="cancel"><i class="close" style="display:none">×</i><a href="#">Cancel</a></span>
-    </div>
-</header>
-<section class="inside_cont">
-<div class="filter_sel_list" style="height: 100%;">
-<h2 id="flightPositionButton">
-    <i class="ico_v2 nearby_ico"></i><strong>Locating</strong>
-</h2>
-<h3 id="recentFromAddressTit" class="address_hd">Recent searches</h3>
-<ul id="recentFromAddress" class="address_list"><li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="ALL" airportname="All" country="China" isinternation="0"><a> <span><strong>Beijing
-    (ALL)        </strong></span><small>
-    Beijing,China - All airport
-</small></a></li><li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="PVG" airportname="PU DONG" country="China" isinternation="0"><a> <span><strong>Shanghai
-    (PVG)        </strong></span><small>
-    Shanghai,China - PU DONG airport
-</small></a></li><li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="" airportname="All" country="China" isinternation="0"><a> <span><strong>Shanghai
-    (ALL)        </strong></span><small>
-    Shanghai,China - All airport
-</small></a></li></ul>
-<h3 class="address_hd">Top destinations</h3>
-<ul id="selectAddress" class="address_list">
-<li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="ALL" airportname="All" country="China" isinternation="0"><a>
-        <span><strong>Shanghai
-            (ALL)        </strong></span><small>
-    Shanghai,China - All airport
-</small></a></li>
-<li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="PVG" airportname="PU DONG" country="China" isinternation="0"><a>
-        <span><strong>Shanghai
-            (PVG)        </strong></span><small>
-    Shanghai,China - PU DONG airport
-</small></a></li>
-<li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="SHA" airportname="HONGQIAO" country="China" isinternation="0"><a>
-        <span><strong>Shanghai
-            (SHA)        </strong></span><small>
-    Shanghai,China - HONGQIAO airport
-</small></a></li>
-<li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="ALL" airportname="All" country="China" isinternation="0"><a>
-        <span><strong>Beijing
-            (ALL)        </strong></span><small>
-    Beijing,China - All airport
-</small></a></li>
-<li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="NAY" airportname="NANYUAN" country="China" isinternation="0"><a>
-        <span><strong>Beijing
-            (NAY)        </strong></span><small>
-    Beijing,China - NANYUAN airport
-</small></a></li>
-<li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="PEK" airportname="CAPITAL" country="China" isinternation="0"><a>
-        <span><strong>Beijing
-            (PEK)        </strong></span><small>
-    Beijing,China - CAPITAL airport
-</small></a></li>
-<li cityname="Guangzhou" cityenname="Guangzhou" citycode="CAN" airportcode="CAN" airportname="BAIYUN" country="China" isinternation="0"><a>
-        <span><strong>Guangzhou
-            (CAN)        </strong></span><small>
-    Guangzhou,China - BAIYUN airport
-</small></a></li>
-<li cityname="Xiamen" cityenname="Xiamen" citycode="XMN" airportcode="XMN" airportname="XIAMEN" country="China" isinternation="0"><a>
-        <span><strong>Xiamen
-            (XMN)        </strong></span><small>
-    Xiamen,China - XIAMEN airport
-</small></a></li>
-<li cityname="Hangzhou" cityenname="Hangzhou" citycode="HGH" airportcode="HGH" airportname="HANGZHOU" country="China" isinternation="0"><a>
-        <span><strong>Hangzhou
-            (HGH)        </strong></span><small>
-    Hangzhou,China - HANGZHOU airport
-</small></a></li>
-<li cityname="Kunming" cityenname="Kunming" citycode="KMG" airportcode="KMG" airportname="KUNMING" country="China" isinternation="0"><a>
-        <span><strong>Kunming
-            (KMG)        </strong></span><small>
-    Kunming,China - KUNMING airport
-</small></a></li>
-<li cityname="Guilin" cityenname="Guilin" citycode="KWL" airportcode="KWL" airportname="GUILIN" country="China" isinternation="0"><a>
-        <span><strong>Guilin
-            (KWL)        </strong></span><small>
-    Guilin,China - GUILIN airport
-</small></a></li>
-<li cityname="Sanya" cityenname="Sanya" citycode="SYX" airportcode="SYX" airportname="SANYA" country="China" isinternation="0"><a>
-        <span><strong>Sanya
-            (SYX)        </strong></span><small>
-    Sanya,China - SANYA airport
-</small></a></li>
-<li cityname="Ningbo" cityenname="Ningbo" citycode="NGB" airportcode="NGB" airportname="NINGBO LISHE" country="China" isinternation="0"><a>
-        <span><strong>Ningbo
-            (NGB)        </strong></span><small>
-    Ningbo,China - NINGBO LISHE airport
-</small></a></li>
-<li cityname="Shenzhen" cityenname="Shenzhen" citycode="SZX" airportcode="SZX" airportname="SHENZHEN" country="China" isinternation="0"><a>
-        <span><strong>Shenzhen
-            (SZX)        </strong></span><small>
-    Shenzhen,China - SHENZHEN airport
-</small></a></li>
-<li cityname="Nanjing" cityenname="Nanjing" citycode="NKG" airportcode="NKG" airportname="NANJING" country="China" isinternation="0"><a>
-        <span><strong>Nanjing
-            (NKG)        </strong></span><small>
-    Nanjing,China - NANJING airport
-</small></a></li>
-<li cityname="Qingdao" cityenname="Qingdao" citycode="TAO" airportcode="TAO" airportname="QINGDAO" country="China" isinternation="0"><a>
-        <span><strong>Qingdao
-            (TAO)        </strong></span><small>
-    Qingdao,China - QINGDAO airport
-</small></a></li>
-<li cityname="Chengdu" cityenname="Chengdu" citycode="CTU" airportcode="CTU" airportname="CHENGDU" country="China" isinternation="0"><a>
-        <span><strong>Chengdu
-            (CTU)        </strong></span><small>
-    Chengdu,China - CHENGDU airport
-</small></a></li>
-<li cityname="Fuzhou" cityenname="Fuzhou" citycode="FOC" airportcode="FOC" airportname="FUZHOU" country="China" isinternation="0"><a>
-        <span><strong>Fuzhou
-            (FOC)        </strong></span><small>
-    Fuzhou,China - FUZHOU airport
-</small></a></li>
-<li cityname="Wuhan" cityenname="Wuhan" citycode="WUH" airportcode="WUH" airportname="WUHAN" country="China" isinternation="0"><a>
-        <span><strong>Wuhan
-            (WUH)        </strong></span><small>
-    Wuhan,China - WUHAN airport
-</small></a></li>
-<li cityname="Xian" cityenname="Xian" citycode="SIA" airportcode="XIY" airportname="XIANYANG" country="China" isinternation="0"><a>
-        <span><strong>Xian
-            (XIY)        </strong></span><small>
-    Xian,China - XIANYANG airport
-</small></a></li>
-<li cityname="Harbin" cityenname="Harbin" citycode="HRB" airportcode="HRB" airportname="HARBIN" country="China" isinternation="0"><a>
-        <span><strong>Harbin
-            (HRB)        </strong></span><small>
-    Harbin,China - HARBIN airport
-</small></a></li>
-<li cityname="Singapore" cityenname="Singapore" citycode="SIN" airportcode="SIN" airportname="Singapore Changi Airport" country="Singapore" isinternation="1"><a>
-        <span><strong>Singapore
-            (SIN)        </strong></span><small>
-    Singapore,Singapore - Singapore Changi Airport airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="ALL" airportname="All" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (ALL)        </strong></span><small>
-    Bangkok,Thailand - All airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="BKK" airportname="Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport)" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (BKK)        </strong></span><small>
-    Bangkok,Thailand - Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport) airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="BKK" airportname="Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport)" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (BKK)        </strong></span><small>
-    Bangkok,Thailand - Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport) airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="DMK" airportname="Don Mueang International Airport" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (DMK)        </strong></span><small>
-    Bangkok,Thailand - Don Mueang International Airport airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="DMK" airportname="Don Mueang International Airport" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (DMK)        </strong></span><small>
-    Bangkok,Thailand - Don Mueang International Airport airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="ALL" airportname="All" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (ALL)        </strong></span><small>
-    Seoul,South Korea - All airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="GMP" airportname="Gimpo International Airport (Kimpo Airport)" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (GMP)        </strong></span><small>
-    Seoul,South Korea - Gimpo International Airport (Kimpo Airport) airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="ICN" airportname="Incheon International Airport" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (ICN)        </strong></span><small>
-    Seoul,South Korea - Incheon International Airport airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="SEL" airportname="All Airports (code was used in Gimpo International Airport)" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (SEL)        </strong></span><small>
-    Seoul,South Korea - All Airports (code was used in Gimpo International Airport) airport
-</small></a></li>
-<li cityname="Tokyo" cityenname="Tokyo" citycode="TYO" airportcode="ALL" airportname="All" country="Japan" isinternation="1"><a>
-        <span><strong>Tokyo
-            (ALL)        </strong></span><small>
-    Tokyo,Japan - All airport
-</small></a></li>
-<li cityname="Tokyo" cityenname="Tokyo" citycode="TYO" airportcode="HND" airportname="Haneda Airport (Haneda Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Tokyo
-            (HND)        </strong></span><small>
-    Tokyo,Japan - Haneda Airport (Haneda Airport) airport
-</small></a></li>
-<li cityname="Tokyo" cityenname="Tokyo" citycode="TYO" airportcode="NRT" airportname="Narita International Airport (formerly New Tokyo International)" country="Japan" isinternation="1"><a>
-        <span><strong>Tokyo
-            (NRT)        </strong></span><small>
-    Tokyo,Japan - Narita International Airport (formerly New Tokyo International) airport
-</small></a></li>
-<li cityname="Ho Chi Minh City" cityenname="HoChiMinhCity" citycode="SGN" airportcode="ALL" airportname="All" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Ho Chi Minh City
-            (ALL)        </strong></span><small>
-    Ho Chi Minh City,Viet Nam - All airport
-</small></a></li>
-<li cityname="Ho Chi Minh City" cityenname="HoChiMinhCity" citycode="SGN" airportcode="SGN" airportname="Tan Son Nhat International Airport" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Ho Chi Minh City
-            (SGN)        </strong></span><small>
-    Ho Chi Minh City,Viet Nam - Tan Son Nhat International Airport airport
-</small></a></li>
-<li cityname="Ho Chi Minh City" cityenname="HoChiMinhCity" citycode="SGN" airportcode="SGN" airportname="Tan Son Nhat International Airport" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Ho Chi Minh City
-            (SGN)        </strong></span><small>
-    Ho Chi Minh City,Viet Nam - Tan Son Nhat International Airport airport
-</small></a></li>
-<li cityname="Manila" cityenname="Manila" citycode="MNL" airportcode="MNL" airportname="Ninoy Aquino International Airport / Villamor Airbase" country="Philippines" isinternation="1"><a>
-        <span><strong>Manila
-            (MNL)        </strong></span><small>
-    Manila,Philippines - Ninoy Aquino International Airport / Villamor Airbase airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="ALL" airportname="All" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (ALL)        </strong></span><small>
-    Kuala Lumpur,Malaysia - All airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="KUL" airportname="Kuala Lumpur International Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (KUL)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Kuala Lumpur International Airport airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="KUL" airportname="Kuala Lumpur International Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (KUL)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Kuala Lumpur International Airport airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="SZB" airportname="Sultan Abdul Aziz Shah Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (SZB)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Sultan Abdul Aziz Shah Airport airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="SZB" airportname="Sultan Abdul Aziz Shah Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (SZB)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Sultan Abdul Aziz Shah Airport airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ALL" airportname="All" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ALL)        </strong></span><small>
-    Osaka,Japan - All airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ITM" airportname="Osaka International Airport (Itami Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ITM)        </strong></span><small>
-    Osaka,Japan - Osaka International Airport (Itami Airport) airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ITM" airportname="Osaka International Airport (Itami Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ITM)        </strong></span><small>
-    Osaka,Japan - Osaka International Airport (Itami Airport) airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ITM" airportname="Osaka International Airport (Itami Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ITM)        </strong></span><small>
-    Osaka,Japan - Osaka International Airport (Itami Airport) airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="KIX" airportname="Kansai International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (KIX)        </strong></span><small>
-    Osaka,Japan - Kansai International Airport airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="KIX" airportname="Kansai International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (KIX)        </strong></span><small>
-    Osaka,Japan - Kansai International Airport airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="KIX" airportname="Kansai International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (KIX)        </strong></span><small>
-    Osaka,Japan - Kansai International Airport airport
-</small></a></li>
-<li cityname="Phuket" cityenname="Phuket" citycode="HKT" airportcode="HKT" airportname="Phuket International Airport" country="Thailand" isinternation="1"><a>
-        <span><strong>Phuket
-            (HKT)        </strong></span><small>
-    Phuket,Thailand - Phuket International Airport airport
-</small></a></li>
-<li cityname="Hanoi" cityenname="Hanoi" citycode="HAN" airportcode="HAN" airportname="Noi Bai International Airport" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Hanoi
-            (HAN)        </strong></span><small>
-    Hanoi,Viet Nam - Noi Bai International Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="ALL" airportname="All" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (ALL)        </strong></span><small>
-    London,United Kingdom - All airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LCY" airportname="London City Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LCY)        </strong></span><small>
-    London,United Kingdom - London City Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LGW" airportname="London Gatwick Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LGW)        </strong></span><small>
-    London,United Kingdom - London Gatwick Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LHR" airportname="London Heathrow Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LHR)        </strong></span><small>
-    London,United Kingdom - London Heathrow Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LTN" airportname="LUTON AIRPORT" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LTN)        </strong></span><small>
-    London,United Kingdom - LUTON AIRPORT airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="STN" airportname="London Stansted Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (STN)        </strong></span><small>
-    London,United Kingdom - London Stansted Airport airport
-</small></a></li>
-<li cityname="Busan (Pusan)" cityenname="Busan(Pusan)" citycode="PUS" airportcode="PUS" airportname="Gimhae International Airport" country="South Korea" isinternation="1"><a>
-        <span><strong>Busan (Pusan)
-            (PUS)        </strong></span><small>
-    Busan (Pusan),South Korea - Gimhae International Airport airport
-</small></a></li>
-<li cityname="Sydney" cityenname="Sydney" citycode="SYD" airportcode="SYD" airportname="Sydney Airport" country="Australia" isinternation="1"><a>
-        <span><strong>Sydney
-            (SYD)        </strong></span><small>
-    Sydney,Australia - Sydney Airport airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="ALL" airportname="All" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (ALL)        </strong></span><small>
-    Paris,France - All airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="CDG" airportname="Charles de Gaulle Airport (Roissy Airport)" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (CDG)        </strong></span><small>
-    Paris,France - Charles de Gaulle Airport (Roissy Airport) airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="ORY" airportname="Orly International Airport" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (ORY)        </strong></span><small>
-    Paris,France - Orly International Airport airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="XPG" airportname="GARE DU NORD RAIL STATION" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (XPG)        </strong></span><small>
-    Paris,France - GARE DU NORD RAIL STATION airport
-</small></a></li>
-<li cityname="Frankfurt" cityenname="Frankfurt" citycode="FRA" airportcode="FRA" airportname="Frankfurt Airport" country="Germany" isinternation="1"><a>
-        <span><strong>Frankfurt
-            (FRA)        </strong></span><small>
-    Frankfurt,Germany - Frankfurt Airport airport
-</small></a></li>
-<li cityname="Nagoya" cityenname="Nagoya" citycode="NGO" airportcode="ALL" airportname="All" country="Japan" isinternation="1"><a>
-        <span><strong>Nagoya
-            (ALL)        </strong></span><small>
-    Nagoya,Japan - All airport
-</small></a></li>
-<li cityname="Nagoya" cityenname="Nagoya" citycode="NGO" airportcode="NGO" airportname="Chubu Centrair International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Nagoya
-            (NGO)        </strong></span><small>
-    Nagoya,Japan - Chubu Centrair International Airport airport
-</small></a></li>
-<li cityname="Nagoya" cityenname="Nagoya" citycode="NGO" airportcode="NKM" airportname="KOMAKI AIR FORCE BASE" country="Japan" isinternation="1"><a>
-        <span><strong>Nagoya
-            (NKM)        </strong></span><small>
-    Nagoya,Japan - KOMAKI AIR FORCE BASE airport
-</small></a></li>
-<li cityname="Phnom Penh" cityenname="PhnomPenh" citycode="PNH" airportcode="PNH" airportname="Phnom Penh International Airport" country="Cambodia" isinternation="1"><a>
-        <span><strong>Phnom Penh
-            (PNH)        </strong></span><small>
-    Phnom Penh,Cambodia - Phnom Penh International Airport airport
-</small></a></li>
-<li cityname="Siem Reap" cityenname="SiemReap" citycode="REP" airportcode="ALL" airportname="All" country="Cambodia" isinternation="1"><a>
-        <span><strong>Siem Reap
-            (ALL)        </strong></span><small>
-    Siem Reap,Cambodia - All airport
-</small></a></li>
-<li cityname="Siem Reap" cityenname="SiemReap" citycode="REP" airportcode="REP" airportname="Angkor International Airport" country="Cambodia" isinternation="1"><a>
-        <span><strong>Siem Reap
-            (REP)        </strong></span><small>
-    Siem Reap,Cambodia - Angkor International Airport airport
-</small></a></li>
-<li cityname="Siem Reap" cityenname="SiemReap" citycode="REP" airportcode="REP" airportname="Angkor International Airport" country="Cambodia" isinternation="1"><a>
-        <span><strong>Siem Reap
-            (REP)        </strong></span><small>
-    Siem Reap,Cambodia - Angkor International Airport airport
-</small></a></li>
-
-</ul>
-</div>
-</section>
-</div>
-
-<div id="choose-airport-arrive" class="page" style="display:none;">
-<header>
-    <div class="contain">
-        <input type="text" id="findAddressInput" placeholder="City name" class="ipt">
-        <span class="cancel"><i class="close" style="display:none">×</i><a href="#">Cancel</a></span>
-    </div>
-</header>
-<section class="inside_cont">
-<div class="filter_sel_list" style="height: 100%;">
-<h2 id="flightPositionButton">
-    <i class="ico_v2 nearby_ico"></i><strong>Locating</strong>
-</h2>
-<h3 id="recentToAddressTit" class="address_hd">Recent searches</h3>
-<ul id="recentToAddress" class="address_list"><li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="NAY" airportname="NANYUAN" country="China" isinternation="0"><a> <span><strong>Beijing
-    (NAY)        </strong></span><small>
-    Beijing,China - NANYUAN airport
-</small></a></li><li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="SHA" airportname="HONGQIAO" country="China" isinternation="0"><a> <span><strong>Shanghai
-    (SHA)        </strong></span><small>
-    Shanghai,China - HONGQIAO airport
-</small></a></li><li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="PVG" airportname="PU DONG" country="China" isinternation="0"><a> <span><strong>Shanghai
-    (PVG)        </strong></span><small>
-    Shanghai,China - PU DONG airport
-</small></a></li></ul>
-<h3 class="address_hd">Top destinations</h3>
-<ul id="selectAddress" class="address_list">
-<li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="ALL" airportname="All" country="China" isinternation="0"><a>
-        <span><strong>Shanghai
-            (ALL)        </strong></span><small>
-    Shanghai,China - All airport
-</small></a></li>
-<li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="PVG" airportname="PU DONG" country="China" isinternation="0"><a>
-        <span><strong>Shanghai
-            (PVG)        </strong></span><small>
-    Shanghai,China - PU DONG airport
-</small></a></li>
-<li cityname="Shanghai" cityenname="Shanghai" citycode="SHA" airportcode="SHA" airportname="HONGQIAO" country="China" isinternation="0"><a>
-        <span><strong>Shanghai
-            (SHA)        </strong></span><small>
-    Shanghai,China - HONGQIAO airport
-</small></a></li>
-<li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="ALL" airportname="All" country="China" isinternation="0"><a>
-        <span><strong>Beijing
-            (ALL)        </strong></span><small>
-    Beijing,China - All airport
-</small></a></li>
-<li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="NAY" airportname="NANYUAN" country="China" isinternation="0"><a>
-        <span><strong>Beijing
-            (NAY)        </strong></span><small>
-    Beijing,China - NANYUAN airport
-</small></a></li>
-<li cityname="Beijing" cityenname="Beijing" citycode="BJS" airportcode="PEK" airportname="CAPITAL" country="China" isinternation="0"><a>
-        <span><strong>Beijing
-            (PEK)        </strong></span><small>
-    Beijing,China - CAPITAL airport
-</small></a></li>
-<li cityname="Guangzhou" cityenname="Guangzhou" citycode="CAN" airportcode="CAN" airportname="BAIYUN" country="China" isinternation="0"><a>
-        <span><strong>Guangzhou
-            (CAN)        </strong></span><small>
-    Guangzhou,China - BAIYUN airport
-</small></a></li>
-<li cityname="Xiamen" cityenname="Xiamen" citycode="XMN" airportcode="XMN" airportname="XIAMEN" country="China" isinternation="0"><a>
-        <span><strong>Xiamen
-            (XMN)        </strong></span><small>
-    Xiamen,China - XIAMEN airport
-</small></a></li>
-<li cityname="Hangzhou" cityenname="Hangzhou" citycode="HGH" airportcode="HGH" airportname="HANGZHOU" country="China" isinternation="0"><a>
-        <span><strong>Hangzhou
-            (HGH)        </strong></span><small>
-    Hangzhou,China - HANGZHOU airport
-</small></a></li>
-<li cityname="Kunming" cityenname="Kunming" citycode="KMG" airportcode="KMG" airportname="KUNMING" country="China" isinternation="0"><a>
-        <span><strong>Kunming
-            (KMG)        </strong></span><small>
-    Kunming,China - KUNMING airport
-</small></a></li>
-<li cityname="Guilin" cityenname="Guilin" citycode="KWL" airportcode="KWL" airportname="GUILIN" country="China" isinternation="0"><a>
-        <span><strong>Guilin
-            (KWL)        </strong></span><small>
-    Guilin,China - GUILIN airport
-</small></a></li>
-<li cityname="Sanya" cityenname="Sanya" citycode="SYX" airportcode="SYX" airportname="SANYA" country="China" isinternation="0"><a>
-        <span><strong>Sanya
-            (SYX)        </strong></span><small>
-    Sanya,China - SANYA airport
-</small></a></li>
-<li cityname="Ningbo" cityenname="Ningbo" citycode="NGB" airportcode="NGB" airportname="NINGBO LISHE" country="China" isinternation="0"><a>
-        <span><strong>Ningbo
-            (NGB)        </strong></span><small>
-    Ningbo,China - NINGBO LISHE airport
-</small></a></li>
-<li cityname="Shenzhen" cityenname="Shenzhen" citycode="SZX" airportcode="SZX" airportname="SHENZHEN" country="China" isinternation="0"><a>
-        <span><strong>Shenzhen
-            (SZX)        </strong></span><small>
-    Shenzhen,China - SHENZHEN airport
-</small></a></li>
-<li cityname="Nanjing" cityenname="Nanjing" citycode="NKG" airportcode="NKG" airportname="NANJING" country="China" isinternation="0"><a>
-        <span><strong>Nanjing
-            (NKG)        </strong></span><small>
-    Nanjing,China - NANJING airport
-</small></a></li>
-<li cityname="Qingdao" cityenname="Qingdao" citycode="TAO" airportcode="TAO" airportname="QINGDAO" country="China" isinternation="0"><a>
-        <span><strong>Qingdao
-            (TAO)        </strong></span><small>
-    Qingdao,China - QINGDAO airport
-</small></a></li>
-<li cityname="Chengdu" cityenname="Chengdu" citycode="CTU" airportcode="CTU" airportname="CHENGDU" country="China" isinternation="0"><a>
-        <span><strong>Chengdu
-            (CTU)        </strong></span><small>
-    Chengdu,China - CHENGDU airport
-</small></a></li>
-<li cityname="Fuzhou" cityenname="Fuzhou" citycode="FOC" airportcode="FOC" airportname="FUZHOU" country="China" isinternation="0"><a>
-        <span><strong>Fuzhou
-            (FOC)        </strong></span><small>
-    Fuzhou,China - FUZHOU airport
-</small></a></li>
-<li cityname="Wuhan" cityenname="Wuhan" citycode="WUH" airportcode="WUH" airportname="WUHAN" country="China" isinternation="0"><a>
-        <span><strong>Wuhan
-            (WUH)        </strong></span><small>
-    Wuhan,China - WUHAN airport
-</small></a></li>
-<li cityname="Xian" cityenname="Xian" citycode="SIA" airportcode="XIY" airportname="XIANYANG" country="China" isinternation="0"><a>
-        <span><strong>Xian
-            (XIY)        </strong></span><small>
-    Xian,China - XIANYANG airport
-</small></a></li>
-<li cityname="Harbin" cityenname="Harbin" citycode="HRB" airportcode="HRB" airportname="HARBIN" country="China" isinternation="0"><a>
-        <span><strong>Harbin
-            (HRB)        </strong></span><small>
-    Harbin,China - HARBIN airport
-</small></a></li>
-<li cityname="Singapore" cityenname="Singapore" citycode="SIN" airportcode="SIN" airportname="Singapore Changi Airport" country="Singapore" isinternation="1"><a>
-        <span><strong>Singapore
-            (SIN)        </strong></span><small>
-    Singapore,Singapore - Singapore Changi Airport airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="ALL" airportname="All" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (ALL)        </strong></span><small>
-    Bangkok,Thailand - All airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="BKK" airportname="Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport)" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (BKK)        </strong></span><small>
-    Bangkok,Thailand - Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport) airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="BKK" airportname="Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport)" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (BKK)        </strong></span><small>
-    Bangkok,Thailand - Suvarnabhumi Airport(New Bangkok International Airport) (Donmuang Airport) airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="DMK" airportname="Don Mueang International Airport" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (DMK)        </strong></span><small>
-    Bangkok,Thailand - Don Mueang International Airport airport
-</small></a></li>
-<li cityname="Bangkok" cityenname="Bangkok" citycode="BKK" airportcode="DMK" airportname="Don Mueang International Airport" country="Thailand" isinternation="1"><a>
-        <span><strong>Bangkok
-            (DMK)        </strong></span><small>
-    Bangkok,Thailand - Don Mueang International Airport airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="ALL" airportname="All" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (ALL)        </strong></span><small>
-    Seoul,South Korea - All airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="GMP" airportname="Gimpo International Airport (Kimpo Airport)" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (GMP)        </strong></span><small>
-    Seoul,South Korea - Gimpo International Airport (Kimpo Airport) airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="ICN" airportname="Incheon International Airport" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (ICN)        </strong></span><small>
-    Seoul,South Korea - Incheon International Airport airport
-</small></a></li>
-<li cityname="Seoul" cityenname="Seoul" citycode="SEL" airportcode="SEL" airportname="All Airports (code was used in Gimpo International Airport)" country="South Korea" isinternation="1"><a>
-        <span><strong>Seoul
-            (SEL)        </strong></span><small>
-    Seoul,South Korea - All Airports (code was used in Gimpo International Airport) airport
-</small></a></li>
-<li cityname="Tokyo" cityenname="Tokyo" citycode="TYO" airportcode="ALL" airportname="All" country="Japan" isinternation="1"><a>
-        <span><strong>Tokyo
-            (ALL)        </strong></span><small>
-    Tokyo,Japan - All airport
-</small></a></li>
-<li cityname="Tokyo" cityenname="Tokyo" citycode="TYO" airportcode="HND" airportname="Haneda Airport (Haneda Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Tokyo
-            (HND)        </strong></span><small>
-    Tokyo,Japan - Haneda Airport (Haneda Airport) airport
-</small></a></li>
-<li cityname="Tokyo" cityenname="Tokyo" citycode="TYO" airportcode="NRT" airportname="Narita International Airport (formerly New Tokyo International)" country="Japan" isinternation="1"><a>
-        <span><strong>Tokyo
-            (NRT)        </strong></span><small>
-    Tokyo,Japan - Narita International Airport (formerly New Tokyo International) airport
-</small></a></li>
-<li cityname="Ho Chi Minh City" cityenname="HoChiMinhCity" citycode="SGN" airportcode="ALL" airportname="All" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Ho Chi Minh City
-            (ALL)        </strong></span><small>
-    Ho Chi Minh City,Viet Nam - All airport
-</small></a></li>
-<li cityname="Ho Chi Minh City" cityenname="HoChiMinhCity" citycode="SGN" airportcode="SGN" airportname="Tan Son Nhat International Airport" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Ho Chi Minh City
-            (SGN)        </strong></span><small>
-    Ho Chi Minh City,Viet Nam - Tan Son Nhat International Airport airport
-</small></a></li>
-<li cityname="Ho Chi Minh City" cityenname="HoChiMinhCity" citycode="SGN" airportcode="SGN" airportname="Tan Son Nhat International Airport" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Ho Chi Minh City
-            (SGN)        </strong></span><small>
-    Ho Chi Minh City,Viet Nam - Tan Son Nhat International Airport airport
-</small></a></li>
-<li cityname="Manila" cityenname="Manila" citycode="MNL" airportcode="MNL" airportname="Ninoy Aquino International Airport / Villamor Airbase" country="Philippines" isinternation="1"><a>
-        <span><strong>Manila
-            (MNL)        </strong></span><small>
-    Manila,Philippines - Ninoy Aquino International Airport / Villamor Airbase airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="ALL" airportname="All" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (ALL)        </strong></span><small>
-    Kuala Lumpur,Malaysia - All airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="KUL" airportname="Kuala Lumpur International Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (KUL)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Kuala Lumpur International Airport airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="KUL" airportname="Kuala Lumpur International Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (KUL)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Kuala Lumpur International Airport airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="SZB" airportname="Sultan Abdul Aziz Shah Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (SZB)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Sultan Abdul Aziz Shah Airport airport
-</small></a></li>
-<li cityname="Kuala Lumpur" cityenname="KualaLumpur" citycode="KUL" airportcode="SZB" airportname="Sultan Abdul Aziz Shah Airport" country="Malaysia" isinternation="1"><a>
-        <span><strong>Kuala Lumpur
-            (SZB)        </strong></span><small>
-    Kuala Lumpur,Malaysia - Sultan Abdul Aziz Shah Airport airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ALL" airportname="All" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ALL)        </strong></span><small>
-    Osaka,Japan - All airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ITM" airportname="Osaka International Airport (Itami Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ITM)        </strong></span><small>
-    Osaka,Japan - Osaka International Airport (Itami Airport) airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ITM" airportname="Osaka International Airport (Itami Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ITM)        </strong></span><small>
-    Osaka,Japan - Osaka International Airport (Itami Airport) airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="ITM" airportname="Osaka International Airport (Itami Airport)" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (ITM)        </strong></span><small>
-    Osaka,Japan - Osaka International Airport (Itami Airport) airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="KIX" airportname="Kansai International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (KIX)        </strong></span><small>
-    Osaka,Japan - Kansai International Airport airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="KIX" airportname="Kansai International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (KIX)        </strong></span><small>
-    Osaka,Japan - Kansai International Airport airport
-</small></a></li>
-<li cityname="Osaka" cityenname="Osaka" citycode="OSA" airportcode="KIX" airportname="Kansai International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Osaka
-            (KIX)        </strong></span><small>
-    Osaka,Japan - Kansai International Airport airport
-</small></a></li>
-<li cityname="Phuket" cityenname="Phuket" citycode="HKT" airportcode="HKT" airportname="Phuket International Airport" country="Thailand" isinternation="1"><a>
-        <span><strong>Phuket
-            (HKT)        </strong></span><small>
-    Phuket,Thailand - Phuket International Airport airport
-</small></a></li>
-<li cityname="Hanoi" cityenname="Hanoi" citycode="HAN" airportcode="HAN" airportname="Noi Bai International Airport" country="Viet Nam" isinternation="1"><a>
-        <span><strong>Hanoi
-            (HAN)        </strong></span><small>
-    Hanoi,Viet Nam - Noi Bai International Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="ALL" airportname="All" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (ALL)        </strong></span><small>
-    London,United Kingdom - All airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LCY" airportname="London City Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LCY)        </strong></span><small>
-    London,United Kingdom - London City Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LGW" airportname="London Gatwick Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LGW)        </strong></span><small>
-    London,United Kingdom - London Gatwick Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LHR" airportname="London Heathrow Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LHR)        </strong></span><small>
-    London,United Kingdom - London Heathrow Airport airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="LTN" airportname="LUTON AIRPORT" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (LTN)        </strong></span><small>
-    London,United Kingdom - LUTON AIRPORT airport
-</small></a></li>
-<li cityname="London" cityenname="London" citycode="LON" airportcode="STN" airportname="London Stansted Airport" country="United Kingdom" isinternation="1"><a>
-        <span><strong>London
-            (STN)        </strong></span><small>
-    London,United Kingdom - London Stansted Airport airport
-</small></a></li>
-<li cityname="Busan (Pusan)" cityenname="Busan(Pusan)" citycode="PUS" airportcode="PUS" airportname="Gimhae International Airport" country="South Korea" isinternation="1"><a>
-        <span><strong>Busan (Pusan)
-            (PUS)        </strong></span><small>
-    Busan (Pusan),South Korea - Gimhae International Airport airport
-</small></a></li>
-<li cityname="Sydney" cityenname="Sydney" citycode="SYD" airportcode="SYD" airportname="Sydney Airport" country="Australia" isinternation="1"><a>
-        <span><strong>Sydney
-            (SYD)        </strong></span><small>
-    Sydney,Australia - Sydney Airport airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="ALL" airportname="All" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (ALL)        </strong></span><small>
-    Paris,France - All airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="CDG" airportname="Charles de Gaulle Airport (Roissy Airport)" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (CDG)        </strong></span><small>
-    Paris,France - Charles de Gaulle Airport (Roissy Airport) airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="ORY" airportname="Orly International Airport" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (ORY)        </strong></span><small>
-    Paris,France - Orly International Airport airport
-</small></a></li>
-<li cityname="Paris" cityenname="Paris" citycode="PAR" airportcode="XPG" airportname="GARE DU NORD RAIL STATION" country="France" isinternation="1"><a>
-        <span><strong>Paris
-            (XPG)        </strong></span><small>
-    Paris,France - GARE DU NORD RAIL STATION airport
-</small></a></li>
-<li cityname="Frankfurt" cityenname="Frankfurt" citycode="FRA" airportcode="FRA" airportname="Frankfurt Airport" country="Germany" isinternation="1"><a>
-        <span><strong>Frankfurt
-            (FRA)        </strong></span><small>
-    Frankfurt,Germany - Frankfurt Airport airport
-</small></a></li>
-<li cityname="Nagoya" cityenname="Nagoya" citycode="NGO" airportcode="ALL" airportname="All" country="Japan" isinternation="1"><a>
-        <span><strong>Nagoya
-            (ALL)        </strong></span><small>
-    Nagoya,Japan - All airport
-</small></a></li>
-<li cityname="Nagoya" cityenname="Nagoya" citycode="NGO" airportcode="NGO" airportname="Chubu Centrair International Airport" country="Japan" isinternation="1"><a>
-        <span><strong>Nagoya
-            (NGO)        </strong></span><small>
-    Nagoya,Japan - Chubu Centrair International Airport airport
-</small></a></li>
-<li cityname="Nagoya" cityenname="Nagoya" citycode="NGO" airportcode="NKM" airportname="KOMAKI AIR FORCE BASE" country="Japan" isinternation="1"><a>
-        <span><strong>Nagoya
-            (NKM)        </strong></span><small>
-    Nagoya,Japan - KOMAKI AIR FORCE BASE airport
-</small></a></li>
-<li cityname="Phnom Penh" cityenname="PhnomPenh" citycode="PNH" airportcode="PNH" airportname="Phnom Penh International Airport" country="Cambodia" isinternation="1"><a>
-        <span><strong>Phnom Penh
-            (PNH)        </strong></span><small>
-    Phnom Penh,Cambodia - Phnom Penh International Airport airport
-</small></a></li>
-<li cityname="Siem Reap" cityenname="SiemReap" citycode="REP" airportcode="ALL" airportname="All" country="Cambodia" isinternation="1"><a>
-        <span><strong>Siem Reap
-            (ALL)        </strong></span><small>
-    Siem Reap,Cambodia - All airport
-</small></a></li>
-<li cityname="Siem Reap" cityenname="SiemReap" citycode="REP" airportcode="REP" airportname="Angkor International Airport" country="Cambodia" isinternation="1"><a>
-        <span><strong>Siem Reap
-            (REP)        </strong></span><small>
-    Siem Reap,Cambodia - Angkor International Airport airport
-</small></a></li>
-<li cityname="Siem Reap" cityenname="SiemReap" citycode="REP" airportcode="REP" airportname="Angkor International Airport" country="Cambodia" isinternation="1"><a>
-        <span><strong>Siem Reap
-            (REP)        </strong></span><small>
-    Siem Reap,Cambodia - Angkor International Airport airport
-</small></a></li>
-
-</ul>
-</div>
-</section>
-</div>
-
-<div id="choose-flight-date" style="display: none;" class="page"><header><a id="calenderBack" class="head_bt head_back"></a><h1 class="page_title">Depart</h1></header><section class="inside_calendar" style="overflow-y: auto; overflow-x: hidden;"><div class="calendar_sel_month"><em> Nov 2014</em></div><table class="calendar_sel_day" id="datestarttag"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td nextdate="2014/11/02" date="2014/11/01" class="ago">1</td></tr><tr><td nextdate="2014/11/03" date="2014/11/02" class="ago">2</td><td nextdate="2014/11/04" date="2014/11/03" class="ago">3</td><td nextdate="2014/11/05" date="2014/11/04" class="ago">4</td><td nextdate="2014/11/06" date="2014/11/05" class="ago">5</td><td nextdate="2014/11/07" date="2014/11/06" class="ago">6</td><td nextdate="2014/11/08" date="2014/11/07" class="ago">7</td><td nextdate="2014/11/09" date="2014/11/08" class="ago">8</td></tr><tr><td nextdate="2014/11/10" date="2014/11/09" class="ago">9</td><td nextdate="2014/11/11" date="2014/11/10" class="ago">10</td><td nextdate="2014/11/12" date="2014/11/11" class="today">11<em>Today</em></td><td nextdate="2014/11/13" date="2014/11/12" class="">12</td><td nextdate="2014/11/14" date="2014/11/13" class="">13</td><td nextdate="2014/11/15" date="2014/11/14" class="">14</td><td nextdate="2014/11/16" date="2014/11/15" class="">15</td></tr><tr><td nextdate="2014/11/17" date="2014/11/16" class="">16</td><td nextdate="2014/11/18" date="2014/11/17" class="">17</td><td nextdate="2014/11/19" date="2014/11/18" class="">18</td><td nextdate="2014/11/20" date="2014/11/19" class="">19</td><td nextdate="2014/11/21" date="2014/11/20" class="">20</td><td nextdate="2014/11/22" date="2014/11/21" class="">21</td><td nextdate="2014/11/23" date="2014/11/22" class="">22</td></tr><tr><td nextdate="2014/11/24" date="2014/11/23" class="">23</td><td nextdate="2014/11/25" date="2014/11/24" class="">24</td><td nextdate="2014/11/26" date="2014/11/25" class="">25</td><td nextdate="2014/11/27" date="2014/11/26" class="cur">26</td><td nextdate="2014/11/28" date="2014/11/27" class="cur">27</td><td nextdate="2014/11/29" date="2014/11/28">28</td><td nextdate="2014/11/30" date="2014/11/29">29</td></tr><tr><td nextdate="2014/12/01" date="2014/11/30">30</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table><div class="calendar_sel_month"><em> Dec 2014</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td nextdate="2014/12/02" date="2014/12/01">1</td><td nextdate="2014/12/03" date="2014/12/02">2</td><td nextdate="2014/12/04" date="2014/12/03">3</td><td nextdate="2014/12/05" date="2014/12/04">4</td><td nextdate="2014/12/06" date="2014/12/05">5</td><td nextdate="2014/12/07" date="2014/12/06">6</td></tr><tr><td nextdate="2014/12/08" date="2014/12/07">7</td><td nextdate="2014/12/09" date="2014/12/08">8</td><td nextdate="2014/12/10" date="2014/12/09">9</td><td nextdate="2014/12/11" date="2014/12/10">10</td><td nextdate="2014/12/12" date="2014/12/11">11</td><td nextdate="2014/12/13" date="2014/12/12">12</td><td nextdate="2014/12/14" date="2014/12/13">13</td></tr><tr><td nextdate="2014/12/15" date="2014/12/14">14</td><td nextdate="2014/12/16" date="2014/12/15">15</td><td nextdate="2014/12/17" date="2014/12/16">16</td><td nextdate="2014/12/18" date="2014/12/17">17</td><td nextdate="2014/12/19" date="2014/12/18">18</td><td nextdate="2014/12/20" date="2014/12/19">19</td><td nextdate="2014/12/21" date="2014/12/20">20</td></tr><tr><td nextdate="2014/12/22" date="2014/12/21">21</td><td nextdate="2014/12/23" date="2014/12/22">22</td><td nextdate="2014/12/24" date="2014/12/23">23</td><td nextdate="2014/12/25" date="2014/12/24">24</td><td nextdate="2014/12/26" date="2014/12/25">25</td><td nextdate="2014/12/27" date="2014/12/26">26</td><td nextdate="2014/12/28" date="2014/12/27">27</td></tr><tr><td nextdate="2014/12/29" date="2014/12/28">28</td><td nextdate="2014/12/30" date="2014/12/29">29</td><td nextdate="2014/12/31" date="2014/12/30">30</td><td nextdate="2015/01/01" date="2014/12/31">31</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table><div class="calendar_sel_month"><em>Jan 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td nextdate="2015/01/02" date="2015/01/01">1</td><td nextdate="2015/01/03" date="2015/01/02">2</td><td nextdate="2015/01/04" date="2015/01/03">3</td></tr><tr><td nextdate="2015/01/05" date="2015/01/04">4</td><td nextdate="2015/01/06" date="2015/01/05">5</td><td nextdate="2015/01/07" date="2015/01/06">6</td><td nextdate="2015/01/08" date="2015/01/07">7</td><td nextdate="2015/01/09" date="2015/01/08">8</td><td nextdate="2015/01/10" date="2015/01/09">9</td><td nextdate="2015/01/11" date="2015/01/10">10</td></tr><tr><td nextdate="2015/01/12" date="2015/01/11">11</td><td nextdate="2015/01/13" date="2015/01/12">12</td><td nextdate="2015/01/14" date="2015/01/13">13</td><td nextdate="2015/01/15" date="2015/01/14">14</td><td nextdate="2015/01/16" date="2015/01/15">15</td><td nextdate="2015/01/17" date="2015/01/16">16</td><td nextdate="2015/01/18" date="2015/01/17">17</td></tr><tr><td nextdate="2015/01/19" date="2015/01/18">18</td><td nextdate="2015/01/20" date="2015/01/19">19</td><td nextdate="2015/01/21" date="2015/01/20">20</td><td nextdate="2015/01/22" date="2015/01/21">21</td><td nextdate="2015/01/23" date="2015/01/22">22</td><td nextdate="2015/01/24" date="2015/01/23">23</td><td nextdate="2015/01/25" date="2015/01/24">24</td></tr><tr><td nextdate="2015/01/26" date="2015/01/25">25</td><td nextdate="2015/01/27" date="2015/01/26">26</td><td nextdate="2015/01/28" date="2015/01/27">27</td><td nextdate="2015/01/29" date="2015/01/28">28</td><td nextdate="2015/01/30" date="2015/01/29">29</td><td nextdate="2015/01/31" date="2015/01/30">30</td><td nextdate="2015/02/01" date="2015/01/31">31</td></tr></tbody></table><div class="calendar_sel_month"><em> Feb 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td nextdate="2015/02/02" date="2015/02/01">1</td><td nextdate="2015/02/03" date="2015/02/02">2</td><td nextdate="2015/02/04" date="2015/02/03">3</td><td nextdate="2015/02/05" date="2015/02/04">4</td><td nextdate="2015/02/06" date="2015/02/05">5</td><td nextdate="2015/02/07" date="2015/02/06">6</td><td nextdate="2015/02/08" date="2015/02/07">7</td></tr><tr><td nextdate="2015/02/09" date="2015/02/08">8</td><td nextdate="2015/02/10" date="2015/02/09">9</td><td nextdate="2015/02/11" date="2015/02/10">10</td><td nextdate="2015/02/12" date="2015/02/11">11</td><td nextdate="2015/02/13" date="2015/02/12">12</td><td nextdate="2015/02/14" date="2015/02/13">13</td><td nextdate="2015/02/15" date="2015/02/14">14</td></tr><tr><td nextdate="2015/02/16" date="2015/02/15">15</td><td nextdate="2015/02/17" date="2015/02/16">16</td><td nextdate="2015/02/18" date="2015/02/17">17</td><td nextdate="2015/02/19" date="2015/02/18">18</td><td nextdate="2015/02/20" date="2015/02/19">19</td><td nextdate="2015/02/21" date="2015/02/20">20</td><td nextdate="2015/02/22" date="2015/02/21">21</td></tr><tr><td nextdate="2015/02/23" date="2015/02/22">22</td><td nextdate="2015/02/24" date="2015/02/23">23</td><td nextdate="2015/02/25" date="2015/02/24">24</td><td nextdate="2015/02/26" date="2015/02/25">25</td><td nextdate="2015/02/27" date="2015/02/26">26</td><td nextdate="2015/02/28" date="2015/02/27">27</td><td nextdate="2015/03/01" date="2015/02/28">28</td></tr></tbody></table><div class="calendar_sel_month"><em> Mar 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td nextdate="2015/03/02" date="2015/03/01">1</td><td nextdate="2015/03/03" date="2015/03/02">2</td><td nextdate="2015/03/04" date="2015/03/03">3</td><td nextdate="2015/03/05" date="2015/03/04">4</td><td nextdate="2015/03/06" date="2015/03/05">5</td><td nextdate="2015/03/07" date="2015/03/06">6</td><td nextdate="2015/03/08" date="2015/03/07">7</td></tr><tr><td nextdate="2015/03/09" date="2015/03/08">8</td><td nextdate="2015/03/10" date="2015/03/09">9</td><td nextdate="2015/03/11" date="2015/03/10">10</td><td nextdate="2015/03/12" date="2015/03/11">11</td><td nextdate="2015/03/13" date="2015/03/12">12</td><td nextdate="2015/03/14" date="2015/03/13">13</td><td nextdate="2015/03/15" date="2015/03/14">14</td></tr><tr><td nextdate="2015/03/16" date="2015/03/15">15</td><td nextdate="2015/03/17" date="2015/03/16">16</td><td nextdate="2015/03/18" date="2015/03/17">17</td><td nextdate="2015/03/19" date="2015/03/18">18</td><td nextdate="2015/03/20" date="2015/03/19">19</td><td nextdate="2015/03/21" date="2015/03/20">20</td><td nextdate="2015/03/22" date="2015/03/21">21</td></tr><tr><td nextdate="2015/03/23" date="2015/03/22">22</td><td nextdate="2015/03/24" date="2015/03/23">23</td><td nextdate="2015/03/25" date="2015/03/24">24</td><td nextdate="2015/03/26" date="2015/03/25">25</td><td nextdate="2015/03/27" date="2015/03/26">26</td><td nextdate="2015/03/28" date="2015/03/27">27</td><td nextdate="2015/03/29" date="2015/03/28">28</td></tr><tr><td nextdate="2015/03/30" date="2015/03/29">29</td><td nextdate="2015/03/31" date="2015/03/30">30</td><td nextdate="2015/04/01" date="2015/03/31">31</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table><div class="calendar_sel_month"><em> Apr 2015</em></div><table class="calendar_sel_day"><thead><tr><td>Sun</td><td> Mon</td><td> Tue</td><td> Wed</td><td> Thu</td><td> Fri</td><td> Sat</td></tr></thead><tbody><tr><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td><td nextdate="2015/04/02" date="2015/04/01">1</td><td nextdate="2015/04/03" date="2015/04/02">2</td><td nextdate="2015/04/04" date="2015/04/03">3</td><td nextdate="2015/04/05" date="2015/04/04">4</td></tr><tr><td nextdate="2015/04/06" date="2015/04/05">5</td><td nextdate="2015/04/07" date="2015/04/06">6</td><td nextdate="2015/04/08" date="2015/04/07">7</td><td nextdate="2015/04/09" date="2015/04/08">8</td><td nextdate="2015/04/10" date="2015/04/09">9</td><td nextdate="2015/04/11" date="2015/04/10">10</td><td nextdate="2015/04/12" date="2015/04/11">11</td></tr><tr><td nextdate="2015/04/13" date="2015/04/12">12</td><td nextdate="2015/04/14" date="2015/04/13">13</td><td nextdate="2015/04/15" date="2015/04/14">14</td><td nextdate="2015/04/16" date="2015/04/15">15</td><td nextdate="2015/04/17" date="2015/04/16">16</td><td nextdate="2015/04/18" date="2015/04/17">17</td><td nextdate="2015/04/19" date="2015/04/18">18</td></tr><tr><td nextdate="2015/04/20" date="2015/04/19">19</td><td nextdate="2015/04/21" date="2015/04/20">20</td><td nextdate="2015/04/22" date="2015/04/21">21</td><td nextdate="2015/04/23" date="2015/04/22">22</td><td nextdate="2015/04/24" date="2015/04/23">23</td><td nextdate="2015/04/25" date="2015/04/24">24</td><td nextdate="2015/04/26" date="2015/04/25">25</td></tr><tr><td nextdate="2015/04/27" date="2015/04/26">26</td><td nextdate="2015/04/28" date="2015/04/27">27</td><td nextdate="2015/04/29" date="2015/04/28">28</td><td nextdate="2015/04/30" date="2015/04/29">29</td><td nextdate="2015/05/01" date="2015/04/30">30</td><td class="blank">&nbsp;</td><td class="blank">&nbsp;</td></tr></tbody></table></section></div>
-
-<div class="page slide_nav" style="margin-left: -100%;">
-    <div class="user_info"><a href="#"><i class="ico_v2 user_ico"></i>Sign in</a></div>
-    <ul>
-        <li id="set-language"><a href="#">Language</a><span class="current"><i class="ico_country ico_country_kr"></i>  English</span></li>
-        <li id="set-currency"><a href="#">Currency</a><span class="current">USD</span></li>
-    </ul>
-    <ul>
-        <li class="active"><a href="#"><i class="ico_v2 orders_ico"></i>My orders</a></li>
-        <li><a href="#"><i class="ico_v2 views_ico"></i>Recent hotel views</a></li>
-        <li><a href="#"><i class="ico_v2 dynamics_ico"></i>Flight dynamics</a></li>
-        <li><a href="#"><i class="ico_v2 history_ico"></i>Search history</a></li>
-        <li><a href="#"><i class="ico_v2 feedback_ico"></i>Feedback</a></li>
-    </ul>
-    <ul>
-        <li><a href="#">Download Ctrip App</a></li>
-        <li><a href="#">中文版</a></li>
-        <li><a href="#">Desktop website</a></li>
-    </ul>
-</div>
-<!-- 请忽略这里的文字，JS和ID 请开发去除，JS为个人测试JS，我们没责任写JS的，请重写。 o(-"-)o -->
-<style type="text/css">
-/* base css*/
-body,h1,h2,h3,h4,dl,dt,dd,ul,ol,li,p{margin:0;padding:0;}
-table{border-collapse:collapse;border-spacing:0}
-h1,h2,h3,h4{font-size:100%}
-ul,li{list-style:none}
-em,i{font-style:normal}
-img{border:0}
-input,img{vertical-align:middle}
-body{min-width:320px;color:#34424b;font-family:Helvetica,Arial;-webkit-text-size-adjust:none;background-color:#fff;font-size:14px;word-wrap:break-word;word-break:keep-all;overflow-x:hidden;overflow-y:auto;-webkit-user-select:none;-webkit-touch-callout:none;-webkit-overflow-scrolling:touch;-webkit-tap-highlight-color:rgba(0,0,0,0);-webkit-font-smoothing:antialiased;}
-a{color:#34424b;text-decoration:none;display:block;}
-input{padding:0;border:1px #C8CACC solid;background-color:#FFF;font-size:14px;color:#666;-webkit-border-radius:2px;-moz-border-radius:2px;border-radius:2px;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;-webkit-appearance:none;appearance:none;outline:none;-webkit-user-modify:read-write-plaintext-only}
-::-webkit-input-placeholder{color:#7D8F9B;}
-​header,nav,section,footer{display:block;}
-section{position:static;top:0;bottom:0;width:100%;overflow:hidden;}
-
-.ico_v2,.head_bt i,.btn_pre,.btn_next{display: inline-block;width: 22px;height: 22px;overflow: hidden;vertical-align: middle;background-image:url("img_v2/sprite_x2.png");-webkit-background-size:55px auto;background-size: 55px auto;}
-.cutover_ico,.hotels_ico,.flight_ico{display: inline-block;width: 20px;height: 20px;}
-.cutover_ico{background-position:0 -94px;}
-.hotels_ico{background-position:0 0;}
-.flight_ico{background-position:0 -22px;}
-.icon_find{background-position:0 -444px;}
-.user_ico{background-position: 0 -119px;}
-.orders_ico{background-position: 0 -174px;}
-.views_ico{background-position: 0 -228px;}
-.dynamics_ico{background-position: 0 -282px;}
-.history_ico{background-position: 0 -336px;}
-.feedback_ico{background-position: 0 -390px;}
-.nearby_ico{background-position: 0 -466px;}
-.dollar_ico{background-position: 0 -491px;}
-.key_ico{background-position: 0 -513px;}
-.home_ico{background-position: 0 -535px;}
-.plus_ico{background-position: 0 -560px;}
-.map_ico{background-position: -27px 0;}
-.mapcur_ico{background-position: -27px -71px;}
-.fliter_ico{background-position: -27px -26px;}
-.sort_ico{background-position: -27px -47px;}
-.icon_dollar{background-position: 0 -491px;}
-.delete_ico{height: 23px;background-position: 0 -587px;}
-.warn_ico{height:14px;width: 14px;background-position:-27px -368px;}
-.btn_pre,.btn_next{display: inline-block;width: 27px;height: 49px;}
-.btn_pre{background-position: -24px -386px;}
-.btn_next{background-position: -27px -439px;}
-.fitness_ico{background-position: -27px -99px;}
-.breakfast_ico{background-position: -27px -126px;}
-.taxi_ico{background-position: -27px -153px;}
-.park_ico{background-position: -27px -180px;}
-.swim_ico{background-position: -27px -207px;}
-.wifi_ico{background-position: -27px -234px;}
-.lunch_ico{background-position: -27px -260px;}
-.noSmoking_ico{background-position: -27px -287px;}
-.massage_ico{background-position: -27px -314px;}
-.sauna_ico{background-position: -27px -341px;}
-.show_ico{background-position: -27px -486px;}
-.edit_ico{background-position: -27px -586px;}
-.choose_ico{width: 17px;height: 17px;background-position: -40px -678px;}
-.add_ico{width: 26px;height: 26px;background-position: -27px -612px;}
-.airline_ico{width: 25px;height: 25px;background-position:0 -649px;}
-.hdAirline_ico{width: 25px;height: 25px;background-position:-27px -649px;}
-.ico_fromto{width: 11px; height:27px;background-position:0 -680px;}
-.ico_stops{width: 11px; height:40px;background-position:-12px -680px;}
-
-.home_logo{background:url("img_v2/homeLogo_new.png");background-image:-webkit-image-set(url(img_v2/homeLogo_new.png) 1x,url(img_v2/homeLogo_new_x2.png) 2x);background-repeat: no-repeat;}
-.ico_country{background-image:url("img_v2/ico_country_x2.png");-webkit-background-size:17px 175px;-moz-background-size:17px 175px;-o-background-size:17px 175px;background-size:17px 175px;width:17px;height:17px;display:inline-block;vertical-align:middle;}
-.ico_country_en{background-position:0 0;}
-.ico_country_de{background-position:0 -17px;}
-.ico_country_es{background-position:0 -34px;}
-.ico_country_jp{background-position:0 -51px;}
-.ico_country_kr{background-position:0 -67px;}
-.ico_country_ru{background-position:0 -85px;}
-.ico_country_fr{background-position:0 -102px;}
-.ico_country_cn{background-position:0 -119px;}
-.ico_country_tc{background-position:0 -136px;}
-.ico_country_vi{background-position: 0 -153px;}
-
-
-@-webkit-keyframes loading {
-    from {-webkit-transform:rotate(0deg);}
-    to {-webkit-transform:rotate(360deg);}
-}
-.ico_loading{width:34px;height:34px;background-position:0 -75px;-webkit-animation:loading 1s infinite linear;-moz-animation:loading 1s infinite linear;-ms-animation:loading 1s infinite linear;-o-animation:loading 1s infinite linear;animation:loading 1s infinite linear;}
-.ico_loading_mini{width:18px;height:18px;background-position:-50px -75px;-webkit-animation:loading 1s infinite linear;-moz-animation:loading 1s infinite linear;-ms-animation:loading 1s infinite linear;-o-animation:loading 1s infinite linear;animation:loading 1s infinite linear;}
-
-html,body{height:100%;}
-.m_bp_hidden{position: relative;overflow: hidden;}
-.page{position: absolute;width:100%;min-height:100%;
-    background-color: #ffffff;
-    -moz-transition-property:margin;-0-transition-property:margin;transition-property:margin;-webkit-transition-property:margin;
-    -moz-transition-duration:.4s;
-    -webkit-transition-duration:.4s;
-    -o-transition-duration:.4s;
-    transition-duration:.4s;}
-.top_banner{overflow: hidden;}
-.top_banner img{width: 100%;}
-.page_tab+.top_banner{margin:-10px 0 0;}
-.top_banner+.flight_home .tab_area{margin-top: 0;}
-.top_banner+.hotels_home{margin-top: 10px;}
-/* overlay */
-.overlay_slide{position: absolute;left: 0;right:0;top: 0;bottom: 0;height: 100%;width: 100%;z-index: 999;}
-header{width: 100%;height:44px;line-height:44px;overflow: hidden;text-align:center;position:relative;z-index:5;background-color:#0f67af;}
-header h1{font-size:20px;color:#fff;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;vertical-align: middle;}
-header .page_title{border-left:#0f5b95 1px solid;border-right:#0f5b95 1px solid;}
-header h1 span{display: block;line-height: 1;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
-header h1 .title_l{margin-bottom:5px;}
-header h1 .title_s{font-size: 12px;}
-header h1 .title_s em{padding-left: 5px;}
-header .head_bt{float: right;position:relative;min-width:24px;padding: 0px 10px;overflow: hidden;border-left:1px solid #3486c2;color:#fff;font-size: 15px;}
-header .head_bt:first-child{float: left;border-left:none;border-right:1px solid #3486c2;}
-header .add_btn{font-size:20px;}
-.home_logo{width:66px;height:24px;position:absolute; top:10px;left:50%;margin: 0px 0px 0px -33px;background-position: 0 0;}
-.head_back:after{display: inline-block;content: "";width: 10px;height: 10px;border-bottom: 2px solid #fff;border-left: 2px solid #fff;
-    transform: rotate(45deg);
-    -webkit-transform: rotate(45deg);
-    -moz-transform: rotate(45deg);
-    -ms-transform: rotate(45deg);
-    -o-transform: rotate(45deg);
-    vertical-align: middle;}
-
-.page_tab{margin-bottom: 10px;height: 40px;width: 100%;table-layout:fixed;display:table;}
-.page_tab li{display:table-cell;text-align: center;vertical-align: middle;border-bottom:1px solid #ddd;}
-.page_tab a{display: block;padding-top:10px;height:40px;line-height:1.4;-webkit-box-sizing:border-box;box-sizing:border-box;font-size: 15px;}
-.page_tab .cur a{color:#1171b7;}
-.page_tab .cur .flight_ico{background-position: 0 -49px;}
-.page_tab .cur .hotels_ico{background-position: 0 -70px;}
-.page_tab i{vertical-align:middle;margin-right: 5px;}
-.page_tab .tab_cutover{display:table-cell;width:30px;text-align: center;border-bottom:none;}
-.page_tab .cur a{border-bottom:4px solid #1171b7;}
-
-.flight_home,.hotels_home{padding:0 15px 10px;}
-
-.hotel_nearby{position: relative; height:36px; line-height: 36px;padding:0 0 0 35px;color:#1380D5; background-color: #fff;font-size:16px;color:#1380D5; color:#1380D5;font-weight:bold;white-space:nowrap;text-overflow:ellipsis;overflow:hidden; border-bottom: 1px solid #c7d5e3;}
-
-.hotel_nearby .ico_v2{position: absolute;left:5px;top:5px;}
-/* search_box */
-.search_box{
-    background-color:#fff;
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-    margin:0 0 15px;}
-.search_box a {
-    display: table-cell;
-    padding:10px 0 5px 0;
-    color: #34424b;
-    position: relative;border-bottom: 1px solid #c7d5e3;
-    box-sizing:border-box;-moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-    overflow:hidden;
-}
-.search_box .cutover_area{display: table-cell;width:45px;vertical-align: middle;text-align: center;}
-.search_box a:last-child{text-align: right;}
-.search_box a:first-child{text-align: left;}
-.search_box a .sort_name {display:block;width:100%;height: 20px;line-height: 20px;
-    word-wrap: normal;
-    word-break: normal;
-    text-overflow:ellipsis;
-    overflow:hidden;font-size: 12px;color:#787878;}
-
-.search_box li a:nth-child(2):before {
-    position:absolute;
-    left:0;
-    top:0;
-    bottom:0;
-    content:"\20";
-    display:block;}
-.search_box li {position: relative; width: 100%;overflow: hidden;
-    display: table;
-    table-layout:fixed;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;}
-
-.search_box .flt_number{padding:10px 0 5px;border-bottom: 1px solid #c7d5e3;}
-.search_box .flt_number a,
-.search_box .hotel_locate a{width: 100%; position: relative;}
-.search_box label {overflow: hidden;
-    display: block;
-    padding: 0 0 4px;
-    font-size: 12px;
-    color: #7d8f9b;}
-.search_box .flt_number label{width: 50%;height: 38px;padding: 0;font-size:15px;}
-.search_box strong {overflow:hidden;font-size:18px;word-wrap: normal;word-break: normal;text-overflow:ellipsis;}
-.search_box .search_locate span {display: inline-block;margin-right:15px;color:#666;}
-/* input_num */
-.input_number{position:absolute;left:auto;bottom:auto;right:5%;top:15px;font-size:12px; font-weight:normal;}
-.input_number .input{ border:0 none;float:left;margin-left:0px;}
-.input_number .num {
-    width:55px;
-    height:30px;
-    line-height:30px;
-    text-align:center;
-    background-color:#fff;
-    float:left;
-    font-size:24px;
-    color:#34424b;}
-.input_number .jia,.input_number .jian{float:left;width:30px; height:30px; line-height:30px;font-size:24px; text-align:center;color:#aaa;background-color: #e4e4e4;}
-.input_number .jian {line-height:26px;font-size:38px;}
-.input_number .active{color:#fff;background-color: #06c;}
-.search_box .d_date{display:block; font-size:18px;  white-space: nowrap; text-overflow: ellipsis;overflow: hidden;}
-.search_box .date_oneway:after{right:5%;}
-.search_box .date_round{margin-left:-8%; display:none; -webkit-transition:all linear 150ms; -moz-transition:all linear 150ms; -o-transition:all linear 150ms;}
-.search_box .empty_area{display: none;}
-.search_box .empty_area_show{display: table-cell;width:20px;}
-.search_box .date_round_show{margin-left:0;-webkit-transition:all linear 150ms; -moz-transition:all linear 150ms;
-    -o-transition:all linear 150ms; transition:all linear 150ms;}
-.search_box .type a,
-.search_box .search_name a,
-.search_box .search_locate a{padding:15px 0 10px;}
-
-.search_box .today{font-size:12px;color:#f60;}
-.search_box .tue{font-size:12px;}
-.search_box .time .date,
-.search_box .time .month{font-size:18px;}
-
-.search_other{padding-top:10px;line-height: 30px;text-align: center;font-size: 15px;color:#b8b8b8;}
-.search_other a{display: inline-block;margin:0 5px;color:#b8b8b8;}
-.search_other a.highlight{color:#099fde;}
-
-
-/* btn */
-.btn_search,.btn_primary,.btn_colorful{padding: 0px 35px;height:45px;line-height: 45px;font-size:18px;color: #fff;text-align: center;
-    border-radius: 3px;-webkit-border-radius:3px;-moz-border-radius:3px;border-radius:3px;}
-.btn_search,.btn,.btn_primary{background-color:#ff9a14;}
-.btn_colorful{background-color:#ff3b30;}
-.btn_primary{display: inline-block;padding: 0px 35px;}
-.btn_search .icon_find{margin-right: 5px; position: relative;}
-.btn_normal_gray{display: inline-block;padding:0 20px;height:30px;line-height:30px;background-color: #dadada;color:#585858;}
-
-.slide_nav{position: absolute;left:0;top:0;bottom:0;z-index:99;padding: 15px;width: 80%;background-color: #313942; -webkit-box-sizing:border-box;box-sizing:border-box;}
-.slide_nav .user_info{padding:0 0 15px 0;}
-.slide_nav ul{border-top:#464d55 1px solid;}
-.slide_nav li{position: relative;padding: 10px 0;}
-.slide_nav li{position: relative;padding: 10px 0;}
-.slide_nav a{color:#fff;}
-.slide_nav a .ico_v2{margin-right: 5px;}
-.slide_nav li.active a{color:#f80;}
-.slide_nav li.active .orders_ico{background-position: 0 -201px;}
-.slide_nav li.active .views_ico{background-position: 0 -255px;}
-.slide_nav li.active .dynamics_ico{background-position: 0 -309px;}
-.slide_nav li.active .history_ico{background-position: 0 -363px;}
-.slide_nav li.active .feedback_ico{background-position: 0 -417px;}
-.slide_nav li .current{position: absolute;right: 10px;top: 10px;color:#fff;}
-
-/* flt */
-.tab_area{position:relative;padding:10px;margin:-10px -15px 0;background-color:#eee;}
-.tab_flt{display: table;
-    table-layout:fixed;
-    box-sizing:border-box;
-    -moz-box-sizing:border-box;
-    -webkit-box-sizing:border-box;
-    width: 100%;
-    overflow: hidden;
-    font-size:18px;
-    background-color: #fff;
-    /* -webkit-box-shadow: 0 1px 1px rgba(0,31,56,.3);
-    -moz-box-shadow: 0 1px 1px rgba(0,31,56,.3);
-    box-shadow: 0 1px 1px rgba(0,31,56,.3); */
-}
-.tab_flt li {display: table-cell;
-    /* float:left; */
-    width:50%;
-    height:35px;
-    line-height:35px;
-    text-align:center;
-    color:#1171b7;
-    -webkit-box-sizing:border-box;
-    box-sizing:border-box;
-    border:1px solid #1171b7;
-    -webkit-border-radius:5px 0 0 5px;
-    -moz-border-radius:5px 0 0 5px;
-    border-radius:5px 0 0 5px;
-}
-.tab_flt li+li{
-    -webkit-border-radius:0 5px 5px 0;
-    -moz-border-radius:0 5px 5px 0;
-    border-radius:0 5px 5px 0;
-}
-.tab_flt .cur{
-    color:#0D65A4;
-    background-color: #1171b7;
-    color:#fff;
-    padding:2px;
-}
-
-/* select city*/
-.filter_sel_typing{padding:10px; background-color:#0D65A4; text-align: center;}
-.filter_sel_typing input[type=text] {
-    -webkit-border-radius:5px;
-    -moz-border-radius:5px;
-    border-radius:5px;
-    height:39px;
-    line-height:normal;
-    width:100%;
-    display:block;
-    -webkit-box-sizing:border-box;
-    -webkit-appearance:none;
-    appearance:none;
-}
-.filter_sel_typing a{width: 40px; height:40px; line-height: 40px; float:right; margin-top: -39px; display:none;}
-.filter_sel_list .address_hd{display:block;padding:0 10px;height:24px; line-height: 24px; background-color:#F1F6FA;border-bottom:1px solid #E1E1E1;}
-.filter_sel_list{background-color: #fff;  overflow: hidden;}
-.filter_sel_list ul{background-color:#fff;}
-.filter_sel_list h2{padding:10px 40px 10px 32px;   position: relative;}
-.filter_sel_list h2 .nearby_ico{margin-left: 10px; position: absolute; top:12px; left:0px;}
-.filter_sel_list h2 strong{font-size:18px; display:inline-block; vertical-align: middle; margin-left: 3px;}
-.filter_sel_list h2 strong em{display:block; color:#7d8f9b; font-size:12px;}
-.filter_sel_list h2 small{display:block; height:24px; line-height: 24px; background-color:#F1F6FA; padding-left: 10px; margin-top: 5px; margin-left: -30px;}
-.filter_sel_list .filter_hd{position: relative;}
-.filter_sel_list .filter_hd .floatingBars{position: absolute;right:10px;top:2px;}
-
-.address_list li a{padding:4px 10px; position: relative; border-bottom:1px solid #E5EFF6;}
-.address_list li span {display:inline-block;width:100%;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:18px;}
-.address_list li small {width:100%;display:inline-block;white-space:nowrap;text-overflow:ellipsis;overflow:hidden;font-size:12px;color:#7d8f9b;}
-.address_list .address_hd{display:block;padding:0 10px;height:24px; line-height: 24px; background-color:#F1F6FA;border-bottom:1px solid #E1E1E1;}
-
-.floatingBars{position:relative;width:31px;height:38px;
-    transform:scale(0.5,0.5);-webkit-transform:scale(0.5,0.5);-moz-transform:scale(0.5,0.5);-o-transform:scale(0.5,0.5);-ms-transform:scale(0.5,0.5);}
-
-.block_rotate{
-    position:absolute;
-    background-color:#FFFFFF;
-    width:5px;
-    height:12px;
-    -moz-border-radius:5px 5px 0 0;
-    -webkit-border-radius:5px 5px 0 0;
-    -webkit-transform:scale(0.4);
-    -webkit-animation-name:fadeG;
-    -webkit-animation-duration:1.6s;
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-direction:linear;
-    -moz-transform:scale(0.4);
-    -moz-animation-name:fadeG;
-    -moz-animation-duration:1.6s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-direction:linear;
-    border-radius:5px 5px 0 0;
-    -o-transform:scale(0.4);
-    -o-animation-name:fadeG;
-    -o-animation-duration:1.6s;
-    -o-animation-iteration-count:infinite;
-    -o-animation-direction:linear;
-    -ms-transform:scale(0.4);
-    -ms-animation-name:fadeG;
-    -ms-animation-duration:1.6s;
-    -ms-animation-iteration-count:infinite;
-    -ms-animation-direction:linear;
-}
-
-.rotate_01{
-    left:0;
-    top:14px;
-    -webkit-animation-delay:0.6s;
-    -webkit-transform:rotate(-90deg);
-    -moz-animation-delay:0.6s;
-    -moz-transform:rotate(-90deg);
-    -o-animation-delay:0.6s;
-    -o-transform:rotate(-90deg);
-    -ms-animation-delay:0.6s;
-    -ms-transform:rotate(-90deg);
-}
-
-.rotate_02{
-    left:4px;
-    top:5px;
-    -webkit-animation-delay:0.8s;
-    -webkit-transform:rotate(-45deg);
-    -moz-animation-delay:0.8s;
-    -moz-transform:rotate(-45deg);
-    -o-animation-delay:0.8s;
-    -o-transform:rotate(-45deg);
-    -ms-animation-delay:0.8s;
-    -ms-transform:rotate(-45deg);
-}
-
-.rotate_03{
-    left:13px;
-    top:1px;
-    -webkit-animation-delay:1s;
-    -webkit-transform:rotate(0deg);
-    -moz-animation-delay:1s;
-    -moz-transform:rotate(0deg);
-    -o-animation-delay:1s;
-    -o-transform:rotate(0deg);
-    -ms-animation-delay:1s;
-    -ms-transform:rotate(0deg);
-}
-
-.rotate_04{
-    right:4px;
-    top:4px;
-    -webkit-animation-delay:1.2s;
-    -webkit-transform:rotate(45deg);
-    -moz-animation-delay:1.2s;
-    -moz-transform:rotate(45deg);
-    -o-animation-delay:1.2s;
-    -o-transform:rotate(45deg);
-    -ms-animation-delay:1.2s;
-    -ms-transform:rotate(45deg);
-}
-
-.rotate_05{
-    right:0;
-    top:14px;
-    -webkit-animation-delay:1.4s;
-    -webkit-transform:rotate(90deg);
-    -moz-animation-delay:1.4s;
-    -moz-transform:rotate(90deg);
-    -o-animation-delay:1.4s;
-    -o-transform:rotate(90deg);
-    -ms-animation-delay:1.4s;
-    -ms-transform:rotate(90deg);
-}
-
-.rotate_06{
-    right:4px;
-    bottom:3px;
-    -webkit-animation-delay:1.6s;
-    -webkit-transform:rotate(135deg);
-    -moz-animation-delay:1.6s;
-    -moz-transform:rotate(135deg);
-    -o-animation-delay:1.6s;
-    -o-transform:rotate(135deg);
-    -ms-animation-delay:1.6s;
-    -ms-transform:rotate(135deg);
-}
-
-.rotate_07{
-    bottom:0;
-    left:13px;
-    -webkit-animation-delay:1.8s;
-    -webkit-transform:rotate(180deg);
-    -moz-animation-delay:1.8s;
-    -moz-transform:rotate(180deg);
-    -o-animation-delay:1.8s;
-    -o-transform:rotate(180deg);
-    -ms-animation-delay:1.8s;
-    -ms-transform:rotate(180deg);
-}
-
-.rotate_08{
-    left:4px;
-    bottom:3px;
-    -webkit-animation-delay:2s;
-    -webkit-transform:rotate(-135deg);
-    -moz-animation-delay:2s;
-    -moz-transform:rotate(-135deg);
-    -o-animation-delay:2s;
-    -o-transform:rotate(-135deg);
-    -ms-animation-delay:2s;
-    -ms-transform:rotate(-135deg);
-}
-
-@-webkit-keyframes fadeG{
-    0%{
-        background-color:#a9a9a9}
-
-    100%{
-        background-color:#e0e0e0}
-
-}
-
-@-moz-keyframes fadeG{
-    0%{
-        background-color:#a9a9a9}
-
-    100%{
-        background-color:#e0e0e0}
-
-}
-
-@-o-keyframes fadeG{
-    0%{
-        background-color:#a9a9a9}
-
-    100%{
-        background-color:#e0e0e0}
-
-}
-
-@-ms-keyframes fadeG{
-    0%{
-        background-color:#a9a9a9}
-
-    100%{
-        background-color:#e0e0e0}
-
-}
-
-/* sort_sel */
-.sort_sel {
-    position:fixed;
-    background-color:#FFFFFF;
-    width:100%;
-    overflow:hidden;
-    z-index:9999;
-    -webkit-transition:bottom 800ms ease-out;
-    -moz-transition:bottom 800ms ease-out;
-    -o-transition:bottom 800ms ease-out;
-    transition:bottom 800ms ease-out;
-    bottom:-100%;
-}
-.sort_sel .hd {position:relative;padding:0 70px;height:44px;line-height:44px;background-color:#0f67af;border-bottom:1px solid #ddd;color:#fff;font-size:18px;}
-.sort_sel .hd h2{text-align: center;font-size: 20px;}
-
-.sort_sel .hd .active{
-    background-color: #099fde;
-    -webkit-box-shadow:none;
-    -moz-box-shadow:none;
-    box-shadow:none;
-}
-.sort_sel .hd span{position: absolute;top:10px;width: 70px;height: 25px;line-height: 25px;overflow: hidden;color:#fff;font-size: 15px;text-align: center;}
-.sort_sel .hd .btn_l{left: 0px;border-right:#22a9e1 1px solid;}
-.sort_sel .hd .btn_r{right: 0px;border-left:#22a9e1 1px solid;}
-.sort_sel li a {position:relative;padding:0 20px;height:44px;line-height:44px;background-color:#f7f7f7;text-align: center;font-size: 15px;}
-.sort_sel li.active a{background-color:#fff; color:#099fde; margin-top: -1px;border-top:1px solid #ddd;border-bottom:1px solid #ddd;}
-
-/* contain_result_list */
-/* contain */
-header .contain{width: 100%;position:relative;padding: 7px;overflow: hidden;text-align: left; font-size:14px;display: table;box-sizing:border-box;-webkit-box-sizing:border-box;}
-header .contain .ipt{display:table-cell;padding:7px 8px; border-radius:6px; line-height: 1; height:30px;width: 100%;vertical-align: top;box-sizing:border-box;-webkit-box-sizing:border-box;}
-header .contain .cancel{position: relative;display:table-cell;color:#fff;width: 65px;line-height: 1;vertical-align: top;}
-header .contain .cancel a{color:#fff; height:13px; padding:7px 0 7px 10px;}
-header .contain .close{position:absolute;top:5px;left:-30px;width:20px;height:20px;line-height:20px;overflow:hidden;text-align:center;color:#fff;font-size:18px;background-color:rgba(0,0,0,.3);cursor:pointer;
-    border-radius:20px;
-    -webkit-border-radius:20px;
-}
-
-.contain_result_list{background-color: #fff;  overflow: hidden;}
-.contain_result_list h3{ height:24px; line-height: 24px; background-color:#e7e7e7; padding-left: 10px; border-bottom:1px solid #c3c3c3; font-size:12px;}
-.contain_result_list ul{background-color:#fff;}
-.contain_result_list li a{padding:10px 10px; position: relative; border-bottom:1px solid #E5EFF6; font-size:18px;}
-.contain_result_list li.active a{background-color:#3486C2; color:#fff;}
-
-/* contain_city_list */
-.contain_city_list{background-color: #fff;  overflow: hidden;}
-.contain_city_list ul{background-color:#fff;}
-.contain_city_list h2{padding:10px 0 10px 38px; border-bottom:1px solid #E1E1E1;  position: relative;}
-.contain_city_list .icon_around{margin-left: 10px; position: absolute; top:10px; left:0;}
-.contain_city_list h2 strong{font-size:18px; display:inline-block; vertical-align: middle; margin-left: 3px; padding-right: 10px;}
-.contain_city_list dt{ height:24px; line-height: 24px; background-color:#e7e7e7; padding-left: 10px; border-bottom:1px solid #c3c3c3; font-size:12px;}
-.contain_city_list li a{padding:4px 10px; position: relative; border-bottom:1px solid #E5EFF6;}
-.contain_city_list li.active a{background-color:#3486C2; color:#fff;}
-.contain_city_list li.active a small{
-    display:inline-block;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-    overflow:hidden;
-    width:100%;
-    color:#fff;
-}
-.contain_city_list li small {
-    display:inline-block;
-    white-space:nowrap;
-    text-overflow:ellipsis;
-    overflow:hidden;
-    width:100%;
-    font-size:12px;
-    color:#7d8f9b;
-}
-
-
-/* calendar_sel */
-.calendar_sel_month {
-    position:relative;
-    background-color:#F1F6FA;
-    height:32px;
-    line-height:32px;
-    padding:8px 10px;
-    font-size:15px;
-    text-align:center;
-}
-.calendar_sel_day {
-    width:100%;
-    border-collapse:collapse;
-    background-color:#F1F6FA;
-    border-top:1px solid #E8F0F7;
-    padding-left:1%;
-    padding-right:1%;
-    text-align:center;
-}
-.calendar_sel_day td{-webkit-box-sizing:border-box;}
-.calendar_sel_day thead td{height: 26px; line-height: 26px; font-size: 12px; color:#7d8f9b; background-color:#fff;}
-.calendar_sel_day thead td:first-child,
-.calendar_sel_day thead td:last-child{color:#ffa900;}
-.calendar_sel_day tbody td {
-    height:44px;
-    width:14.279%;
-    color:#1f5074;
-    background-color:#E3F2FC;
-    border-left:1px solid #C7DEEE;
-    border-top:1px solid #C7DEEE;
-    font-size:18px;
-}
-.calendar_sel_day tr td:first-child,
-.calendar_sel_day tr td:last-child{width: 14.28%;}
-.calendar_sel_day tbody tr td:last-child{border-right:1px solid #C7DEEE;}
-.calendar_sel_day tbody .ago {
-    background-color:#E9EAED;
-    color:#c0c0c0;
-    border-left:1px solid #D3D3D4;
-    border-top:1px solid #D3D3D4;
-}
-.calendar_sel_day tbody .today em{font-style: normal; font-size:12px; display:block; width: 100%;}
-.calendar_sel_day tbody .cur{background-color: #3486C2; -webkit-box-shadow:1px 1px 5px 0  #2B6FA1 inset;
-    -moz-box-shadow:1px 1px 5px 0  #2B6FA1 inset; box-shadow:1px 1px 5px 0  #2B6FA1 inset; color:#fff;}
-.calendar_sel_day tbody .sel{background-color:#62A7D9; color:#fff;}
-.calendar_sel_day tbody .today{color:#FFA900}
-.calendar_sel_day tbody .blank {
-    background-color:#F1F6FA;
-    border-left:1px solid #fff;
-    border-top:1px solid #fff;
-    border-bottom:1px solid #fff;
-}
-.calendar_sel_day tbody tr:first-child .blank {
-    border-bottom:1px solid #C7DEEE;
-    border-top:1px solid #F1F6FA;
-    border-left:1px solid #F1F6FA
-}
-.calendar_sel_day tbody tr:last-child .ago{border-bottom:1px solid #D3D3D4;}
-.calendar_sel_day tbody tr:last-child{border-bottom:1px solid #C7DEEE}
-.calendar_sel_day tbody tr td:last-child {border-right:1px solid #C7DEEE;}
-.calendar_sel_day tbody tr:last-child .blank {
-    border-left:1px solid #C7DEEE;
-    border-top:1px solid #C7DEEE;
-    border-right:1px solid #F1F6FA;
-    border-bottom:1px solid #C7DEEE;
-}
-.calendar_sel_day tbody tr:last-child .blank:last-child{border-left:1px solid #fff; border-right:1px solid #fff; }
-
-/*choose*/
-.choose_list{margin-bottom: 20px;background-color: #fff;border-bottom:1px solid #ddd;}
-.choose_list li{display: block;padding:0 24px 0 10px;margin:0 10px;position: relative;height: 44px;line-height: 44px; border-bottom:1px solid #ddd; cursor: pointer;
-    white-space:nowrap;text-overflow:ellipsis;overflow:hidden;}
-.choose_list li:last-child{border-bottom:none;}
-.choose_list li .flight_logo{margin-right: 8px;}
-.choose_list li .san{margin-right: 15px; font-size:12px; display: inline-block; width:36px;}
-.choose_list li .choose_ico{display:none;position: absolute; right:0; top:16px;}
-.choose_list li .ico_country{margin-right: 5px;}
-.choose_list li.active .choose_ico{display:block;}
-.choose_list li.active em{color:#099fde;}
-.choose_action{padding: 0px 10px;}
-.choose_action a{display: block;}
-
-/* popup_confirm */
-.popup_confirm{border-radius:6px; background-color: #DDE1E2; position: fixed; left:50%;top:50%;z-index: 99; width: 268px; text-align: center;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-}
-.popup_confirm .cont{padding:10px; line-height: 1.5;word-break:break-all;word-wrap:break-word;}
-.popup_confirm .cont table{ min-height:60px; width: 100%; color:#000; font-weight:bold;}
-.popup_confirm .action{border-top:1px solid #A9ADAE;  height:40px; line-height: 40px; text-align: center;}
-.popup_confirm .action a{color:#147EFB; font-weight:bold;}
-.popup_confirm .action_two a{width: 50%; float:left;  -webkit-box-sizing:border-box;
-    box-sizing:border-box;}
-.popup_confirm .action_two a:first-child{border-right:1px solid #A9ADAE;}
-
-</style>
-<!-- 请去除一下代码 -->
-
-
-
+    <script type="text/javascript">
+    var serverInfoJson = {
+        "Lang": "english",
+        "Currency": "CNY",
+        "TimeNow": '2015-03-10 16:11:31',
+        "ReleaseNo": "2015011902",
+        "WebResourcePath": "http://webresource.english.ctrip.com/ResGlobalOnline/R9/EnglishSite/"
+    };
+    //多语言提示
+    var common_tips = {
+        "tipscannotgetcity": "We cannot auto-locate you. Please select your city manually.",
+        "tipsconnectionfailed": "Network connection failed. Please check your network settings.",
+        "tipscannotlocate": "We cannot locate you. Please check your location settings.",
+        "tipscannothotel": "We cannot locate this hotel.",
+        "tipsexitapp": "Are you sure you want to exit the app?",
+        "tipsconfirm": "Confirm",
+        "tipsok":"OK",
+        "tipscancel": "Cancel",
+        "tipsnote": "Note",
+        "Locating": "Locating",
+        "months": "Jan,Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec",
+        "weeks": "Sun, Mon, Tue, Wed, Thu, Fri, Sat",
+        "today": "Today",
+        "day": "Day",
+        "PrivacyMode": "“Private Browsing” is enabled. Please turn it off to continue using our mobile site.",
+        "SysBusy": "System Busy",
+        "TimeOut": "Time out"
+    };
+    var load_error_msg = '';
+    //hotels multilang tips
+    var hotel_index_tips = {
+        "msg_cannotgetcity": "We cannot auto-locate you. Please select your city manually.",
+        "msg_locating": "Locating",
+        "CalendarTitleStart": "Check-in",
+        "CalendarTitleBack": "Check-out"
+    };
+    //flights multilang tips
+    var flight_index_tips = {
+        "msg_fromcity": "Please provide departure city.",
+        "msg_toctiy": "Please provide arrival city.",
+        "msg_samecity": "Departure city and arrival city can not be same.",
+        "msg_ddate": "Please provide check-in date.",
+        "msg_adate": "Please provide check-out date.",
+        "msg_adatelittle": "Check-out date cannot be earlier than check-in date.",
+        "msg_cannotgetcity": "We cannot auto-locate you. Please select your city manually.",
+        "msg_locating": "Locating",
+        "CalendarTitleStart": "Depart",
+        "CalendarTitleBack": "Return"
+    }
+    var url_request_json = {
+        "hotel_list": '/m/hotels/list/',
+        "hotel_chcity": '/m/hotels/choosecity/',
+        "hotel_chhotel": '/m/hotels/choosehotel/',
+        "flight_list": '/m/flights/flightfirst/',
+        "flight_chcity": '/m/flights/choosecity/',
+        "WapAdvertiseUri": '/m/home/getadvertisejson/'
+    };
+    </script>
+    <script type="text/javascript" src=".././framework/js/vendor/requirejs/require.js" data-main="./js/main" defer="" async="true"></script>
 </body>
-</html> 
+</html>

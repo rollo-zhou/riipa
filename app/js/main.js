@@ -1,14 +1,18 @@
 (function() {
   var app = {
     paths: {
-      "home": "views/home/index",
-      "zepto": "vendor/zepto/zepto.min.js",
+      "home": "views/home/home",
+      "zepto": "vendor/zepto/zepto.min",
+      "jquery": "vendor/zepto/zepto.min",
       "underscore": "vendor/underscore/underscore-min",
-      "domReady": "libs/3rd/domReady",
-      "router": "helper/router"
+      "domReady": "/framework/js/helper/3rd/domReady",
+      "router": "/framework/js/core/router/router",
+      "views":"/framework/js/core/view/view",
+      "pageView":"core/pageView/pageView",
+
     },
     routes: {
-      "": "home",
+      "/index.html": "home",
       "/hotels/list/:citynahtmlme-hotels-list-:cityid": "hotels.list"
     },
     shim: {
@@ -20,7 +24,11 @@
     baseUrl: "js/",
     domReady: function() {
       require(['domReady', "router"], function(D, R) {
-        R.bindRoutes(app.routes);
+        R.bindRoutes(app.routes,function (viewName) {
+          require([viewName],function(view) {
+            new view();
+          });
+        });
         D(function() {
           R.loadUrl();
         });

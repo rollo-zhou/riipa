@@ -54,23 +54,21 @@ define(["underscore"], function() {
     // returns `false`.
     loadUrl = function(fragment) {
       fragment = fragment = getFragment(fragment);
-      return _.any(handlers, function(handler) {
-        if (handler.route.test(fragment)) {
-          handler.callback(fragment);
-          return true;
-        }
+      var handler=_.find(handlers, function(handler) {
+        return handler.route.test(fragment);
       });
+      handler&&handler.callback(fragment);
     },
 
     // Bind all defined routes to `Backbone.history`. We have to reverse the
     // order of the routes here to support behavior where the most general
     // routes can be defined at the bottom of the route map.
-    bindRoutes = function(routes) {
+    bindRoutes = function(routes,callback) {
       if (!routes) return;
       //routes = _.result(this, 'routes');
       var route, routesKeys = _.keys(routes);
       while ((route = routesKeys.pop()) != null) {
-        routeHandlers(route, routes[route]);
+        routeHandlers(route, routes[route],callback);
       }
     },
 
@@ -80,13 +78,11 @@ define(["underscore"], function() {
     //       ...
     //     });
     //
-    routeHandlers = function(route, name) {
+    routeHandlers = function(route, name,callback) {
       if (!_.isRegExp(route)) route = routeToRegExp(route);
       //var router = this;
-      addRouteHandlers(route, function(fragment) {
-        //var args = router.extractParameters(route, fragment);
-        //router.execute(callback, args);
-        require([name]);
+      addRouteHandlers(route, function () {
+        callback(name);
       });
       return this;
     },
