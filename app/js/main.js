@@ -5,22 +5,25 @@
       "zepto": "vendor/zepto/zepto.min",
       "jquery": "vendor/zepto/zepto.min",
       "underscore": "vendor/underscore/underscore-min",
-      "domReady": "/framework/js/helper/3rd/domReady",
-      "router": "/framework/js/core/router/router",
-      "views":"/framework/js/core/view/view",
+      "domReady": "../framework/js/helper/3rd/domReady",
+      "router": "../framework/js/core/router/router",
+      "view":"../framework/js/core/view/view",
       "pageView":"core/pageView/pageView",
 
     },
     routes: {
       "/index.html": "home",
-      "/hotels/list/:citynahtmlme-hotels-list-:cityid": "hotels.list"
+      "/hotels/list/:cityname-hotels-list-:cityid": "hotels.list"
     },
     shim: {
       'zepto': {
         exports: '$'
       },
+      'jquery': {
+        exports: '$'
+      },
     },
-    urlArgs: "releaseno=",
+    urlArgs: "",
     baseUrl: "js/",
     domReady: function() {
       require(['domReady', "router"], function(D, R) {

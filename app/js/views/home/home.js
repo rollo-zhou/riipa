@@ -1,61 +1,80 @@
-/**
- * Created by jiey on 2014/11/4.
- */
-define(['jquery', 'underscore', 'pageView', 'views/home/flight', 'views/home/hotel', 'views/home/slide-nav'], function($, _, PageView, flight, hotel, slideNav) {
-    var HomeRootView = PageView.extend({
-            initialize: function() {
-                this.renderAll();
-            },
-            render: function() {
-                return this;
-            },
-            ui: {
-                'overlaySide': '.overlay_slide',
-                'slideNavView': '.slide_nav',
-                'hotelView': '.hotels_home',
-                'flightView': '.flight_home',
-                'toggleMenuBtn': '.head_bt',
-                'homePageTab': '.page_tab'
-            },
-            events: {
-                'tap @ui.toggleMenuBtn': 'toggleMenu',
-                'tap @ui.overlaySide': 'toggleMenu',
-                'tap @ui.homePageTab li': 'switchPageTab'
-            },
-            itemView: {
-                'hotelView': hotel,
-                'flightView': flight,
-                'slideNavView': slideNav
-            },
-            eventsCallBack: {
-                toggleMenu: function(event) {
-                    console.log('toggle');
-                    this.animToggleMenu();
-                    this.childViews.slideNavView.trigger('toggle');
-                },
-                showOverlaySide: function() {
-                    this.ui.overlaySide.show();
-                },
-                hideOverlaySide: function() {
-                    this.ui.overlaySide.hide();
-                },
-                switchPageTab: function(event) {
-                    var $item = $(event.currentTarget);
 
-                    if ($item.hasClass('cur') || (this.childViews.hotelView.isAnimated() && this.childViews.flightView.isAnimated())) {
-                        return false;
-                    }
-                    $item.addClass('cur').siblings().removeClass('cur');
-                    //console.log('li', event)
-                    if ($item.find('i').hasClass('hotels_ico')) {
-                        this.childViews.hotelView.animShow();
-                        this.childViews.flightView.animHide();
-                    } else if ($item.find('i').hasClass('flight_ico')) {
-                        this.childViews.hotelView.animHide();
-                        this.childViews.flightView.animShow();
-                    }
-                }
-            },
-    });
-    return HomeRootView;
+define(['jquery', 'pageView', 'views/home/flight', 'views/home/hotel', 'views/home/slidenav'], function($, PageView, flight, hotel, slideNav) {
+  var HomeRootView = PageView.extend({
+    el: "#home-index",
+    template: "",
+    config: {
+      ui: "",
+      url: "",
+      tips: "",
+      variable: "",
+      Parameters: ""
+    },
+    ui: {
+      'overlaySide': '.overlay_slide',
+      'slideNavView': '.slide_nav',
+      'hotelView': '.hotels_home',
+      'flightView': '.flight_home',
+      'toggleMenuBtn': '.head_bt',
+      'homePageTab': '.page_tab'
+    },
+    events: {
+      'click @ui.toggleMenuBtn': 'toggleMenu',
+      'click @ui.overlaySide': 'toggleMenu',
+      'click @ui.homePageTab li': 'switchPageTab'
+    },
+    widget: {
+      "name1": "name1"
+    },
+    itemView: {
+      'hotelView': hotel,
+      'flightView': flight,
+      'slideNavView': slideNav
+    },
+    viewModle:{
+
+    },
+    widgetCallBack: {
+      name1: function() {
+        return 1;
+      }
+    },
+    eventsCallBack: {
+      toggleMenu: function(event) {
+        this.itemView.slideNavView.$el.css({
+          "-webkit-transform": this.itemView.slideNavView.$el.css("-webkit-transform")=="translateX(-100%)"?"translateX(0%)":'translateX(-100%)'
+        });
+        this.$el.css({
+          "-webkit-transform": this.itemView.slideNavView.$el.css("-webkit-transform")=="translateX(-100%)"?"translateX(0%)":'translateX(80%)'
+        });
+      },
+      switchPageTab: function(event) {
+        var $item = $(event.currentTarget);
+        if ($item.hasClass('cur')) {
+          return false;
+        }
+        $item.addClass('cur').siblings().removeClass('cur');
+        if ($item.find('i').hasClass('hotels_ico')) {
+          this.itemView.hotelView.$el.show();
+          this.itemView.flightView.$el.hide();
+        } else if ($item.find('i').hasClass('flight_ico')) {
+          this.itemView.hotelView.$el.hide();
+          this.itemView.flightView.$el.show();
+        }
+      }
+    },
+    listenToCallBack: {
+
+    },
+    listenTo: function() {
+
+    },
+    render: function() {
+      return this;
+    },
+    initialize: function() {
+
+    }
+  });
+  return HomeRootView;
 });

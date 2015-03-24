@@ -1,169 +1,142 @@
-/**
- * Created by jiey on 2014/11/6.
- */
-define(['jquery', 'pageView'], function ($, PageView) {
-    var Flight
+define(['jquery', 'pageView', 'views/home/flight.airport', 'views/home/flight.date','widget/m/calendar'], function($, PageView, airport, date,calendar) {
+  var FlightView = PageView.extend({
+    el: "#flightsDiv",
+    ui: {
+      flightRoundTrip: '#flightRoundTrip',
+      flightOneWay: "#flightOneWay",
+      flightAddressFrom: "#flightIndex-flightAddressFrom",
+      flightAddressTo: "#flightIndex-flightAddressTo",
+      flightDateDepart: "#flightDateDepart",
+      flightDateRound: "#flightDateRound",
+      flightindexclass: "#flightindexclass",
+      flightSearch: "#flightSearch",
+      calendar:"#Index_Calendar_Depart !",
+      checkoutdate:"#dtime",
+      checkindate:"#atime",
+      //checkin:"#choosehotelcheckinpanel"
+    },
+    events: {
+      'click @ui.flightRoundTrip': 'flightRoundTrip',
+      'click @ui.flightOneWay': 'flightOneWay',
+      'click @ui.flightAddressFrom': 'flightAddressFrom',
+      'click @ui.flightAddressTo': 'flightAddressTo',
+      'click @ui.flightDateDepart': 'flightDateDepart',
+      'click @ui.flightDateRound': 'flightDateRound',
+      'click @ui.flightindexclass': 'flightindexclass',
+      'click @ui.flightSearch': 'flightSearch'
+    },
+    itemView: {
+      'airport': airport,
+      //'airportTo': {view:airport,options:{source:"to"}},
+      //'checkIn': date,
+      // 'checkOut': {view:date,options:{source:"out"}},
+    },
+    viewModle: {
+      user: {
+        oneWayOrRoundTrip: 1,
+        from: "",
+        to: "",
+        depart: "",
+        retur: "",
+        clas: ""
+      },
+      calendar:{}
+    },
+    widget: {
+      "calendar": "calendar"
+    },
+    widgetCallBack: {
+      calendar: function() {
+        var that=this;
+        new calendar({
+          beforCallback: function() {
+            that.ui.calendar.show();
+            that.parentView.$el.hide();
+          },
+          callback: function(data) {
+            that.ui.calendar.hide();
+            that.parentView.$el.show();
+            that.viewModle.calendar.callback.call(that,data);
+          },
+          dWrap:this.ui.calendar,
+          unInitCallback:true,
+          dStartInput: this.ui.flightDateDepart,
+          dBackInput: this.ui.flightDateRound,
+          sStartTitle: "start",
+          sBackTitle: "end",
+          fromFlights: 1,
+          titelClassName: "head_bt head_back",
+          monthRange: 12
+        });
+      }
+    },
+    eventsCallBack: {
+      flightRoundTrip: function(event) {
+        var target = $(event.currentTarget);
+        if (target.hasClass('cur')) return;
+        target.attr("class", "cur").siblings().removeClass();
+        this.ui.flightDateRound.show();
+        this.viewModle.oneWayOrRoundTrip = 2;
+      },
+      flightOneWay: function(event) {
+        var target = $(event.currentTarget);
+        if (target.hasClass('cur')) return;
+        target.attr("class", "cur").siblings().removeClass();
+        this.ui.flightDateRound.hide();
+        this.viewModle.oneWayOrRoundTrip = 1;
+      },
+      flightAddressFrom: function() {
+        this.parentView.$el.hide();
+        this.itemView.airport.$el.show();
+        this.itemView.airport.viewModle.callback = this.listenToCallBack.flightAddressFrom;
+      },
+      flightAddressTo: function(event) {
+        this.parentView.$el.hide();
+        this.itemView.airport.$el.show();
+        this.itemView.airport.viewModle.callback = this.listenToCallBack.flightAddressTo;
+      },
+      flightDateDepart: function() {
+        this.viewModle.calendar.callback=this.listenToCallBack.flightDateDepart;
+      },
+      flightDateRound: function() {
+        this.viewModle.calendar.callback=this.listenToCallBack.flightDateRound;
+      },
+      flightindexclass: function(event) {
 
-    var FlightView = PageView.extend({
-        _ANIM_FLAG: false,
-        initialize: function () {
-            this.render();
-        },
-        ui: {
-            fltDeparture: '#flt-departure',
-            fltDepartureName: '#flt-departure strong',
-            fltDepartureDesName: '#flt-departure span',
-            fltArrive: '#flt-arrive',
-            fltArriveName: '#flt-arrive strong',
-            fltArriveDesName: '#flt-arrive span',
-            fltDepartDate: '#flt-depart-date',
-            fltArriveDate: '#flt-arrive-date'
-        },
-        events: {
-            'click .tab_flt li': 'switchFltTab',
-            'click .cutover_area': 'switchChooseFltDate',
-            'click @ui.fltDeparture': 'showChooseAirportDepartView',
-            'click @ui.fltArrive': 'showChooseAirportArriveView',
-            'click @ui.fltDepartDate': 'showChooseFlightDateView',
-            'click @ui.fltArriveDate': 'showChooseFlightDateView'
-        },
-        render: function () {
-            this.loadChooseAirportDepartView();
-            this.loadChooseAirportArriveView();
-            this.loadChooseFlightDateView();
-        },
-        loadChooseAirportDepartView: function () {
-            var self = this;
-            require(['views/home/choose-airport-depart'], function (ChooseAirportDepartView) {
-                self.addChildView('chooseAirportDepartView', new ChooseAirportDepartView({
-                    hasFullPage: true,
-                    parentView: self,
-                    el: '#choose-airport-depart'
-                }));
+      },
+      flightSearch: function() {
 
-            });
-        },
-        loadChooseAirportArriveView: function () {
-            var self = this;
-            require(['views/home/choose-airport-arrive'], function (ChooseAirportArriveView) {
-                self.addChildView('chooseAirportArriveView', new ChooseAirportArriveView({
-                    hasFullPage: true,
-                    parentView: self,
-                    el: '#choose-airport-arrive'
-                }));
+      },
+    },
+    listenToCallBack: {
+      flightAddressFrom: function(data) {
+        this.ui.flightAddressFrom.find('span').html(data.cityname);
+        this.viewModle.user.from = data.cityname;
+      },
+      flightAddressTo: function(data) {
+        this.ui.flightAddressTo.find('span').html(data.cityname);
+        this.viewModle.user.to = data.cityname;
+      },
+      flightDateDepart: function(data) {
+        this.ui.checkoutdate.html(data.start.full);
+      },
+      flightDateRound: function(data) {
+        this.ui.checkindate.html(data.back.full);
+      },
+    },
+    listen: function() {
+      // this.on("flightAddressFrom",this.listenToCallBack.flightAddressFrom);
+      // this.on("flightAddressTo",this.listenToCallBack.flightAddressTo);
+      // this.on("flightDateDepart",this.listenToCallBack.flightDateDepart);
+      // this.on("flightDateRound",this.listenToCallBack.flightDateRound);
+    },
+    initialize: function() {
+      this.listen();
+    },
+    render: function() {
 
-            });
-        },
-        showChooseAirportDepartView: function () {
-            this.childViews.chooseAirportDepartView.trigger('animShow');
-        },
-        showChooseAirportArriveView: function () {
-            this.childViews.chooseAirportArriveView.trigger('animShow');
-        },
-        showChooseFlightDateView: function () {
-            this.childViews.chooseFlightDateView.trigger('animShow');
-        },
-        loadChooseFlightDateView: function () {
-            var self = this;
-            require(['views/home/choose-flight-date'], function (ChooseFlightDateView) {
-                self.addChildView('chooseFlightDateView', new ChooseFlightDateView({
-                    hasFullPage: true,
-                    parentView: self,
-                    el: '#choose-flight-date'
-                }));
+    },
 
-            });
-        },
-        switchFltTab: function (event) {
-            var $this = $(event.currentTarget),
-                CUR_FLAG = 'cur',
-                itemValue = $this.data('value');
-            if ($this.hasClass(CUR_FLAG)) {
-                return false;
-            }
-            var DATE_CLASS_NAME = {
-                round: {
-                    depart: 'date_oneway_two',
-                    arrive: 'date_round_show'
-                },
-                one: {
-                    depart: 'date_oneway',
-                    arrive: 'date_round'
-                }
-            };
-
-            switch (itemValue) {
-                case 'round':
-                    this.ui.fltDepartDate.addClass(DATE_CLASS_NAME.round.depart).removeClass(DATE_CLASS_NAME.one.depart);
-                    this.ui.fltArriveDate.addClass(DATE_CLASS_NAME.round.arrive).removeClass(DATE_CLASS_NAME.one.arrive);
-                    break;
-                case 'one':
-                    this.ui.fltDepartDate.addClass(DATE_CLASS_NAME.one.depart).removeClass(DATE_CLASS_NAME.round.depart);
-                    this.ui.fltArriveDate.addClass(DATE_CLASS_NAME.one.arrive).removeClass(DATE_CLASS_NAME.round.arrive);
-                    break;
-                default:
-            }
-            $this.addClass(CUR_FLAG).siblings().removeClass(CUR_FLAG);
-        },
-        switchChooseFltDate: function () {
-            this.clacuFltDate();
-        },
-        clacuFltDate: function () {
-            this.ui.fltDeparture.css({
-                position: 'absolute',
-                overflow: 'visible'
-            });
-            this.ui.fltArrive.css({
-                position: 'relative',
-                overflow: 'visible'
-            });
-            this.ui.fltArriveName.css({
-                float: 'right'
-            });
-            this.ui.fltArriveDesName.css({
-                position: 'relative',
-                float: 'right'
-            });
-            this.animFltDate();
-        },
-        animFltDate: function () {
-            var self = this,
-                ANIM_RANGE = $(window).width() / 2;
-            this.ui.fltDepartureName.animate({
-                marginLeft: ANIM_RANGE
-            }, 400, function () {
-                self.ui.fltDepartureName.removeAttr('style');
-            });
-            this.ui.fltDepartureDesName.animate({
-                marginLeft: ANIM_RANGE
-
-            }, 400, function () {
-                self.ui.fltDepartureDesName.removeAttr('style');
-                self.ui.fltDeparture.removeAttr('style');
-            });
-            this.ui.fltArriveName.animate({
-                marginRight: ANIM_RANGE
-            }, 400, function () {
-                self.ui.fltArriveName.removeAttr('style');
-            });
-            this.ui.fltArriveDesName.animate({
-                marginRight: ANIM_RANGE
-            }, 400, function () {
-                self.ui.fltArriveDesName.removeAttr('style');
-                self.ui.fltArrive.removeAttr('style');
-                self.switchFltTabText();
-            });
-        },
-        switchFltTabText: function () {
-            var fltDepartureName = this.ui.fltDepartureName.text();
-            var fltDepartureDesName = this.ui.fltDepartureDesName.text();
-            var fltArriveName = this.ui.fltArriveName.text();
-            var fltArriveDesName = this.ui.fltArriveDesName.text();
-            this.ui.fltDepartureName.text(fltArriveName);
-            this.ui.fltDepartureDesName.text(fltArriveDesName);
-            this.ui.fltArriveName.text(fltDepartureName);
-            this.ui.fltArriveDesName.text(fltDepartureDesName);
-        }
-    });
-    return  FlightView;
+  });
+  return FlightView;
 });

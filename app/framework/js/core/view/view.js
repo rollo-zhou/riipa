@@ -3,7 +3,7 @@
  * 修改于Backbone 1.1.2 和 Marionette.View v2.3.1。
  */
 
-define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Events, helper) {
+define(['underscore', 'jquery', '../framework/js/core/events/events.js', '../framework/js/core/helper/helper'], function(_, $, Events, helper) {
 
   var array = [];
   var push = array.push;
@@ -29,8 +29,11 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
 
     this._ensureElement();
     this.initialize.apply(this, arguments);
-    this.delegateEvents();
+    //this.delegateEvents();
+    this._delegateDOMEvents();
     this.bindUIElements();
+    this.bindItemView();
+    this.bindWidget();
   };
 
   // Cached regex to split keys for `delegate`.
@@ -100,7 +103,7 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
       this.undelegateEvents();
       for (var key in events) {
         var method = events[key];
-        if (!_.isFunction(method)) method = this[events[key]];
+        if (!_.isFunction(method)) method = this.eventsCallBack[events[key]];
         if (!method) continue;
 
         var match = key.match(delegateEventSplitter);
@@ -158,8 +161,8 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
 
     // internal method to delegate DOM events and triggers
     _delegateDOMEvents: function(eventsArg) {
-      var events = Marionette._getValue(eventsArg || this.events, this);
-
+      //var events = Marionette._getValue(eventsArg || this.events, this);
+      var events = this.events;
       // normalize ui keys
       events = this.normalizeUIKeys(events);
       if (_.isUndefined(eventsArg)) {
@@ -226,7 +229,16 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
 
       // bind each of the selectors
       _.each(bindings, function(selector, key) {
-        this.ui[key] = this.$(selector);
+        if(/^(\S+)\s+(\S+)$/.test(selector)){
+          var selectorList=selector.split(' ');
+          if(selectorList[1]==="!"){
+            this.ui[key] = $(selectorList[0]);
+          }else{
+            this.ui[key] = $(selectorList[1]).find(selectorList[0]);
+          }
+        }else{
+          this.ui[key] = this.$(selector);
+        }
       }, this);
     },
 
@@ -251,7 +263,7 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
     },
 
     uiExtend: function() {
-      if (_.isObject(this.uiConfig) && _.isObject(this.ui)) this.ui = _.extend(this.ui, this.uiConfig);
+      //if (_.isObject(this.uiConfig) && _.isObject(this.ui)) this.ui = _.extend(this.ui, this.uiConfig);
     },
 
     bindItemView: function() {
@@ -266,7 +278,7 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
       this.itemView = {};
 
       _.each(bindings, function(item, key) {
-        addItemView(key,item);
+        this.addItemView(key,item);
       }, this);
     },
 
@@ -275,15 +287,15 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
         item=key;
         key=key.cid;
       }
-      if (_.Empty(key)) return;
+      if (_.isEmpty(key)) return;
       var newItem = {};
-      if (_.isObject(item)) {
+      if (_.isFunction(item)) {
+        newItem.view = item;
+      }else if (_.isObject(item)) {
         if (item.view) {
           newItem.view = item.view;
         }
         newItem.options = item.options || null;
-      } else if (_.isFunction(item)) {
-        newItem.view = item;
       }
       if (!_.isFunction(newItem.view)) return;
       newItem = new newItem.view(newItem.options);
@@ -305,8 +317,36 @@ define(['underscore', 'jquery', 'events', './helper/helper'], function(_, $, Eve
 
       this.itemView = this._itemViewBindings;
       delete this._itemViewBindings;
-    }
+    },
 
+    bindWidget: function() {
+      this._bindWidget();
+    },
+
+    // This method binds the elements specified in the "ui" hash inside the view's code with
+    // the associated jQuery selectors.
+    _bindWidget: function() {
+      if (!this.widget) {
+        return;
+      }
+
+      // store the ui hash in _uiBindings so they can be reset later
+      // and so re-rendering the view will be able to find the bindings
+      if (!this._widgetBindings) {
+        this._widgetBindings = this.widget;
+      }
+
+      // get the bindings result, as a function or otherwise
+      var bindings = _.result(this, '_widgetBindings');
+
+      // empty the ui so we don't have anything to start with
+      this.widget = {};
+
+      // bind each of the selectors
+      _.each(bindings, function(name, key) {
+        this.widget[key] = this.widgetCallBack[name].call(this);
+      }, this);
+    },
   });
 
   View.extend = helper.extend;
