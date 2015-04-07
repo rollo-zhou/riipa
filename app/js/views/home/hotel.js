@@ -8,33 +8,7 @@ define(['jquery', 'pageView'], function($, PageView) {
         this.updateCity(cityModel);
       });
 
-      // geolocation.on('start', function () {
-      //     console.log('start', arguments);
-      // });
 
-      // geolocation.on('success', function () {
-      //     console.log('success', arguments);
-      //     console.log('getPositionData', geolocation.getPositionData());
-      // });
-
-      // geolocation.on('error', function () {
-      //     console.log('error', arguments);
-      // });
-
-      // geolocation.on('end', function () {
-      //     console.log('end', arguments);
-
-      // });
-
-      // geolocation.on('isChina', function () {
-      //     console.log('isChina', arguments);
-      // });
-
-      // geolocation.on('unavailable', function () {
-      //     console.log('unavailable', arguments);
-      // });
-
-      //this.render();
     },
     ui: {
       'searchCityBtn': '.search_locate',
