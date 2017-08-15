@@ -44,3 +44,7 @@ $ gulp
 ## License
 
 MIT
+
+
+console.log(JSON.stringify({"my_phone":"aaa_aa" ,"city_name":"aaa_aa"}).replace(/([a-z]+)(_)([a-z])([^"]+)(?=":)/g,function(s1,s2,s3,s4,s5){return s2+s4.toUpperCase()+s5}))
+console.log(JSON.stringify({"myPhone":"aaaAaa" ,"cityName":"aaaAaa"}).replace(/([a-z]+)([A-Z])([^"]+)+(?=":)/g,function(s1,s2,s3,s4){return s2+"_"+s3.toLowerCase()+s4}))
